@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market/src/core/extation/extation_navgter.dart';
-import 'package:market/src/feature/register/presntation/view/spalsh_screen/widgets/splash_screen_widgets.dart';
-
-import '../../auth/sign_in/screen/sign_in_screen.dart';
+import 'package:market/src/feature/spalsh_screen/widgets/splash_screen_widgets.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,9 +15,12 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 3)).then(
       (value) {
-        if (mounted) {
-          context.pushReplacement(pushReplacement: const SignInScreen());
+        WidgetsBinding.instance.addPersistentFrameCallback((_){
+          if (mounted) {
+          context.pushReplacement(pushReplacement: const Scaffold());
         }
+        });
+        
       },
     );
   }
