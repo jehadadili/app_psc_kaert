@@ -39,6 +39,8 @@ dependencies:
   loading_animation_widget: ^1.2.1
   flutter_bloc: ^8.1.6
   bloc: ^8.1.4
+  animated_text_kit: ^4.2.2
+  
   
 
 dev_dependencies:
