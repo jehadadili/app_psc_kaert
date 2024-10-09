@@ -9,5 +9,6 @@ abstract class RepositoryRegister {
     required String gender,
     required String profileImage,
     required String password,
+    required String token,
   });
 }

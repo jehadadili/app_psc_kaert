@@ -20,6 +20,7 @@ class RepositoryImpl implements RepositoryRegister {
     required String gender,
     required String profileImage,
     required String password,
+    required String token,
   }) async {
     try {
       if (await networkInfoImpl.isconected) {
@@ -31,6 +32,7 @@ class RepositoryImpl implements RepositoryRegister {
           gender: gender,
           profileImage: profileImage,
           password: password,
+          token: token,
         );
         return response;
       } else {

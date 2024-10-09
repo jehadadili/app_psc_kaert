@@ -1,7 +1,7 @@
 import 'package:market/src/feature/register/domain/model/user_model.dart';
 
 class RegisterModeal {
-  final String? status;
+   String? status;
   final String? message;
   final UserModel? user;
   RegisterModeal({

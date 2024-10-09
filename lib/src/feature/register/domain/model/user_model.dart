@@ -6,8 +6,9 @@ class UserModel {
   final String gender;
   final String password;
   final String profileImage;
-
-  UserModel({
+  final String token;
+  UserModel(
+    {
     required this.name,
     required this.email,
     required this.phone,
@@ -15,6 +16,7 @@ class UserModel {
     required this.gender,
     required this.profileImage,
     required this.password,
+    required  this.token,
   });
 
   factory UserModel.fromeJson(Map<String, dynamic> json) {
@@ -25,7 +27,9 @@ class UserModel {
         nationalId: json["nationalId"],
         gender: json["gender"],
         profileImage: json["profileImage"],
-        password: json["password"]);
+        password: json["password"],
+        token: json["token"],
+        );
   }
 
   static fromejson(data) {}

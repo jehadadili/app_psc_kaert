@@ -4,17 +4,17 @@ import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/core/widget/custom_border.dart';
 
 class CustomTextFieldWidgets extends StatelessWidget {
-  const CustomTextFieldWidgets(
-      {super.key,
-      required this.hintText,
-      required this.labelText,
-      required this.prefixIcon,
-      required this.validator,
-      this.controller,
-      this.keyboardType,
-       this.obscureText = true});
+  const CustomTextFieldWidgets({
+    super.key,
+    required this.hintText,
+    required this.labelText,
+    required this.prefixIcon,
+    required this.validator,
+    this.controller,
+    this.keyboardType,
+  });
   final String hintText;
-  final bool obscureText;
+
   final String labelText;
   final Widget prefixIcon;
   final String? Function(String?) validator;
@@ -25,7 +25,6 @@ class CustomTextFieldWidgets extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
       child: TextFormField(
-        obscureText: obscureText,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         style: const TextStyle(color: ColorApp.black),
         controller: controller,

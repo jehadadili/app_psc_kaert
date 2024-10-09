@@ -16,6 +16,7 @@ class AddUserUseCase {
     required String gender,
     required String profileImage,
     required String password,
+    required String token,
   }) async {
     return repositoryRegister.addUser(
       name: name,
@@ -25,6 +26,7 @@ class AddUserUseCase {
       gender: gender,
       profileImage: profileImage,
       password: password,
+      token: token,
     );
   }
 }

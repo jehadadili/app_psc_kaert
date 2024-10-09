@@ -17,6 +17,7 @@ class RemotDataImp implements RemotDataSourceregister {
     required String gender,
     required String profileImage,
     required String password,
+    required String token,
   }) async {
     try {
       dio.interceptors.add(LogInterceptor(responseBody: true));
@@ -28,6 +29,7 @@ class RemotDataImp implements RemotDataSourceregister {
         "gender": gender,
         "profileImage": profileImage,
         "password": password,
+        "token" : token,
       });
       if (response.statusCode == 200 || response.statusCode == 201) {
         log(response.toString());

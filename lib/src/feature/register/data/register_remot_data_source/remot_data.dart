@@ -9,5 +9,6 @@ abstract class RemotDataSourceregister {
     required String gender,
     required String profileImage,
     required String password,
+    required String token,
   });
 }
