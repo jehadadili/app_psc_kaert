@@ -26,4 +26,10 @@ class StringApp {
   // Token
   static const String labelToken = "Token";
   static const String hintToken = "Please enter your token";
+  // Register
+  static const String registerRow = "Already have an account?";
+  static const String lOGIN = "Login";
+  // Login
+  static const String loginRow = "Create a new account?";
+  static const String register = "Register";
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:market/src/core/style/string_app/string_app.dart';
+import 'package:market/src/core/style/string/string_app.dart';
 import 'package:market/src/core/validator/validater.dart';
 import 'package:market/src/core/widget/custom_text_field_widgets.dart';
 
@@ -26,7 +26,7 @@ class CustomColumTextField extends StatelessWidget {
       children: [
         CustomTextFieldWidgets(
           hintText: StringApp.labelName,
-          labelText: StringApp.hintEmail,
+          labelText: StringApp.hintName,
           prefixIcon: const Icon(Icons.person),
           controller: userNameController,
           validator: (name) {
@@ -55,7 +55,7 @@ class CustomColumTextField extends StatelessWidget {
         ),
         CustomTextFieldWidgets(
           hintText: StringApp.labelIdNumber,
-          labelText: StringApp.labelName,
+          labelText: StringApp.labelIdNumber,
           prefixIcon: const Icon(Icons.insert_drive_file),
           controller: idController,
           keyboardType: TextInputType.number,

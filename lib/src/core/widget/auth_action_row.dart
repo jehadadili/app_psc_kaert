@@ -16,7 +16,7 @@ class AuthActionRow extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-              fontSize: 20.sp,
+              fontSize: 18.sp,
               color: ColorApp.black,
               fontWeight: FontWeight.w400),
         ),

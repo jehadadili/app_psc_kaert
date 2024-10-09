@@ -11,8 +11,10 @@ class CustomTextFieldWidgets extends StatelessWidget {
       required this.prefixIcon,
       required this.validator,
       this.controller,
-      this.keyboardType});
+      this.keyboardType,
+       this.obscureText = true});
   final String hintText;
+  final bool obscureText;
   final String labelText;
   final Widget prefixIcon;
   final String? Function(String?) validator;
@@ -23,7 +25,8 @@ class CustomTextFieldWidgets extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
       child: TextFormField(
-        autovalidateMode: AutovalidateMode.always,
+        obscureText: obscureText,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         style: const TextStyle(color: ColorApp.black),
         controller: controller,
         validator: validator,

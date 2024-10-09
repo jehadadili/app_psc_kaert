@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/extation/extation_navgter.dart';
 import 'package:market/src/core/style/image/image_app.dart';
+import 'package:market/src/core/style/string/string_app.dart';
 import 'package:market/src/feature/login/presntation/view/widget/custom_login_text_field.dart';
 import 'package:market/src/feature/register/presntation/view/screen/register_screen.dart';
 
-import '../../../../../core/style/color/color_app.dart';
 import '../../../../../core/widget/auth_action_row.dart';
+import '../../../../../core/widget/container_widgets.dart';
 import '../../../../../core/widget/custom_buttom_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -19,54 +20,40 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
-
   final TextEditingController passwordController = TextEditingController();
-
   GlobalKey<FormState> formKey = GlobalKey();
 
   @override
   void dispose() {
     super.dispose();
     emailController.dispose();
-
     passwordController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(ImageApp.auth),
-            fit: BoxFit.cover,
-          ),
-        ),
+      body: BackgroundImageContainer(
         child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
-                height: 60.h,
+                height: 50.h,
               ),
               Image.asset(
                 ImageApp.logo,
+                width: 150.w,
+                height: 130.h,
               ),
               SizedBox(
-                height: 30.h,
+                height: 10.h,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Form(
                   key: formKey,
-                  child: Container(
-                    width: double.infinity,
-                    height: 500,
-                    decoration: BoxDecoration(
-                      color: ColorApp.white.withOpacity(0.7),
-                      borderRadius: BorderRadius.circular(25.r),
-                    ),
+                  child: AuthContainer(
+                    height: 400.h,
                     child: Column(
                       children: [
                         SizedBox(
@@ -86,27 +73,35 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         CustomLoginTextField(
-                            emailController: emailController,
-                            passwordController: passwordController),
+                          emailController: emailController,
+                          passwordController: passwordController,
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
                         CustomButtomWidget(
                           text: "Login",
                           icon: Icons.login,
                           onPressed: () {
-                            if (formKey.currentState!.validate()) {}
+                            if (formKey.currentState!.validate()) {
+                              // ضع هنا إجراءات تسجيل الدخول
+                            }
                           },
                         ),
                         SizedBox(
-                          height: 30.h,
+                          height: 20.h,
                         ),
+                        // Spacer here to create flexible space
+                        // This will take up any available space
                         AuthActionRow(
-                          text: "Create a new account?",
-                          textnav: "Register",
+                          text: StringApp.loginRow,
+                          textnav: StringApp.register,
                           onPressed: () {
                             context.pushReplacement(
                               pushReplacement: const RegisterScreen(),
                             );
                           },
-                        )
+                        ),
                       ],
                     ),
                   ),

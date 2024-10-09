@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:market/src/core/style/string_app/string_app.dart';
+import 'package:market/src/core/style/string/string_app.dart';
 import 'package:market/src/core/validator/validater.dart';
 import 'package:market/src/core/widget/custom_text_field_widgets.dart';
 
@@ -28,7 +28,7 @@ class CustomLoginTextField extends StatelessWidget {
           hintText: StringApp.hintPassword,
           labelText: StringApp.labelPassword,
           prefixIcon: const Icon(Icons.lock),
-          controller: emailController,
+          controller: passwordController,
           validator: (password) {
             return MyValidator.passwrdValidator(password);
           },
