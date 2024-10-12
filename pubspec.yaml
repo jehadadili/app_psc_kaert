@@ -44,6 +44,7 @@ dependencies:
   internet_connection_checker_plus: ^2.5.2
   image_picker: ^1.1.2
   get_it: ^8.0.0
+  dartz: ^0.10.1
   
   
 

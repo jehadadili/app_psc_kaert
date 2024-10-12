@@ -21,12 +21,13 @@ class MyValidator {
     if (phone == null || phone.isEmpty) {
       return "phone is requred";
     }
-    if (phone.length != 11) {
-      return "pleas enter a valid phone 11 number ";
-    }
     if (!phone.startsWith("010")) {
       return "Phone number must start with 010";
     }
+    if (phone.length != 11) {
+      return "pleas enter a valid phone 11 number ";
+    }
+
     return null;
   }
 

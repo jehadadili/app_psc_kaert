@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/core/style/image/image_app.dart';
+import 'package:market/src/core/widget/custom_widget_loading.dart';
 
 class SplashScreenWidgets extends StatelessWidget {
   const SplashScreenWidgets({super.key});
@@ -19,10 +19,10 @@ class SplashScreenWidgets extends StatelessWidget {
             SizedBox(
               height: 50.h,
             ),
-            LoadingAnimationWidget.threeRotatingDots(
+            const CustomWidgetLoading(
               color: ColorApp.white,
-              size: 100.sp,
-            ),
+              size: 100,
+            )
           ],
         ),
       ),

@@ -4,7 +4,7 @@ abstract class RegisterState {}
 
 class RegisterInitial extends RegisterState {}
 
-class RegisterLoding extends RegisterState {}
+class RegisterLoading extends RegisterState {}
 
 class RegisterSuccess extends RegisterState {
   final RegisterModeal registerModeal;

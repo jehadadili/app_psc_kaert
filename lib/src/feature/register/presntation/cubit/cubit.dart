@@ -5,14 +5,20 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:market/src/feature/register/domain/use_case/use_case_login.dart';
 import 'package:market/src/feature/register/presntation/cubit/state.dart';
 
 import '../../domain/use_case/use_case_register.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   static RegisterCubit get(context) => BlocProvider.of(context);
+  final UseCaseLogin useCaseLogin;
+
   final AddUserUseCase addUserUseCase;
-  RegisterCubit({required this.addUserUseCase}) : super(RegisterInitial());
+  RegisterCubit({
+    required this.addUserUseCase,
+    required this.useCaseLogin,
+  }) : super(RegisterInitial());
   addUserRegister({
     required name,
     required email,
@@ -23,7 +29,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     required token,
   }) async {
     try {
-      emit(RegisterLoding());
+      emit(RegisterLoading());
       var respone = await addUserUseCase.addUserUsecaseRegister(
         name: name,
         email: email,
@@ -65,5 +71,23 @@ class RegisterCubit extends Cubit<RegisterState> {
     } else {
       emit(ChoesImageError(error: "Image loading failed"));
     }
+  }
+
+  logincubit({
+    required email,
+    required password,
+  }) async {
+    emit(RegisterLoading());
+    var data = await useCaseLogin.usecaselogin(
+      email: email,
+      password: password,
+    );
+    data.fold((f) {
+      log(f.toString());
+      emit(RegisterError(error: f.toString()));
+    }, (sussecc) {
+      log(sussecc.message.toString());
+      emit(RegisterSuccess(registerModeal: sussecc));
+    });
   }
 }

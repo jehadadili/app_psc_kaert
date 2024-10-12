@@ -1,7 +1,9 @@
 import 'dart:developer';
 
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:market/src/core/api/endpont.dart';
+import 'package:market/src/core/errors/failure.dart';
 import 'package:market/src/core/errors/server_failuer.dart';
 import 'package:market/src/feature/register/data/register_remot_data_source/remot_data.dart';
 import 'package:market/src/feature/register/domain/model/register_modeal.dart';
@@ -29,7 +31,7 @@ class RemotDataImp implements RemotDataSourceregister {
         "gender": gender,
         "profileImage": profileImage,
         "password": password,
-        "token" : token,
+        "token": token,
       });
       if (response.statusCode == 200 || response.statusCode == 201) {
         log(response.toString());
@@ -43,6 +45,28 @@ class RemotDataImp implements RemotDataSourceregister {
       }
     } catch (error) {
       return Future.error("this is error ???  $error");
+    }
+  }
+
+  @override
+  Future<Either<Failure, RegisterModeal>> login(
+      {required String email, required String password}) async {
+    try {
+      var respone = await dio.post(Endpont.login, data: {
+        "email": email,
+        "password": password,
+      });
+      log(respone.statusCode.toString());
+      log(respone.data.toString());
+      if (respone.statusCode == 200 || respone.statusCode == 201) {
+        var data = respone.data;
+        var userLogin = RegisterModeal.fromejson(data);
+        return right(userLogin);
+      } else {
+        throw ServerFailuer(errormasseig: "opps Unknown error");
+      }
+    } catch (error) {
+      return left(ServerFailuer(errormasseig: error.toString()));
     }
   }
 }

@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import 'package:market/src/core/errors/failure.dart';
 import 'package:market/src/feature/register/domain/model/register_modeal.dart';
 
 abstract class RemotDataSourceregister {
@@ -10,5 +12,10 @@ abstract class RemotDataSourceregister {
     required String profileImage,
     required String password,
     required String token,
+  });
+
+  Future<Either<Failure, RegisterModeal>> login({
+    required String email,
+    required String password,
   });
 }

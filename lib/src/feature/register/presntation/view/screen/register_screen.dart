@@ -7,6 +7,7 @@ import 'package:market/src/core/style/string/string_app.dart';
 import 'package:market/src/core/widget/auth_action_row.dart';
 import 'package:market/src/core/widget/custom_buttom_widget.dart';
 import 'package:market/src/core/widget/custom_show_snack_bar.dart';
+import 'package:market/src/core/widget/custom_widget_loading.dart';
 import 'package:market/src/feature/login/presntation/view/screen/login_screen.dart';
 import 'package:market/src/feature/register/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/register/presntation/cubit/state.dart';
@@ -61,8 +62,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 context: context);
           }
         }
-
-        
       },
       builder: (context, state) {
         RegisterCubit cubit = RegisterCubit.get(context);
@@ -107,8 +106,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         cubit.addImage();
                                       },
                                       child: Container(
-                                        width: 50.w,
-                                        height: 50.h,
+                                        width: 80.w,
+                                        height: 80.h,
                                         decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
@@ -129,7 +128,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         ),
                                       ),
                                     ),
-
                               CustomColumTextField(
                                 userNameController: userNameController,
                                 passwordController: passwordController,
@@ -142,6 +140,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               SizedBox(
                                 height: 20.h,
                               ),
+
+                              if (state is RegisterLoading)
+                                const CustomWidgetLoading(
+                                  color: Colors.blue,
+                                  size: 50,
+                                ),
+                              if (state is RegisterError) Text(state.error),
                               CustomButtomWidget(
                                 text: "Sign In",
                                 icon: Icons.login,
@@ -158,6 +163,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   }
                                 },
                               ),
+
                               SizedBox(
                                 height: 20.h,
                               ),

@@ -1,3 +1,6 @@
+import 'package:dartz/dartz.dart';
+import 'package:market/src/core/errors/failure.dart';
+import 'package:market/src/core/errors/server_failuer.dart';
 import 'package:market/src/core/network/network_info_impl.dart';
 import 'package:market/src/feature/register/data/register_remot_data_source/remot_data_imp.dart';
 import 'package:market/src/feature/register/domain/model/register_modeal.dart';
@@ -40,6 +43,22 @@ class RepositoryImpl implements RepositoryRegister {
       }
     } catch (error) {
       return Future.error("ERROR RIGSTER $error".toString());
+    }
+  }
+
+  @override
+  Future<Either<Failure, RegisterModeal>> loginuser(
+      {required String email, required String password}) async {
+    try {
+      if (await networkInfoImpl.isconected) {
+        var respone = remotDataImp.login(email: email, password: password);
+
+        return respone;
+      } else {
+        throw Exception("opps Unknown error");
+      }
+    } catch (e) {
+      return left(ServerFailuer(errormasseig: e.toString()));
     }
   }
 }

@@ -18,7 +18,7 @@ class AddUserUseCase {
     required String password,
     required String token,
   }) async {
-    return repositoryRegister.addUser(
+    return await repositoryRegister.addUser(
       name: name,
       email: email,
       phone: phone,
