@@ -3,7 +3,6 @@ import 'package:market/src/core/extation/extation_navgter.dart';
 import 'package:market/src/feature/login/presntation/view/screen/login_screen.dart';
 import 'package:market/src/feature/spalsh_screen/widgets/splash_screen_widgets.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 

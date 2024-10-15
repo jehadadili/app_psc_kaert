@@ -12,6 +12,8 @@ class CustomTextFieldWidgets extends StatelessWidget {
     required this.validator,
     this.controller,
     this.keyboardType,
+    this.filled,
+    this.fillColor,
   });
   final String hintText;
 
@@ -20,6 +22,8 @@ class CustomTextFieldWidgets extends StatelessWidget {
   final String? Function(String?) validator;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
+  final bool? filled;
+  final Color? fillColor;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,8 +35,8 @@ class CustomTextFieldWidgets extends StatelessWidget {
         validator: validator,
         keyboardType: keyboardType,
         decoration: InputDecoration(
-          fillColor: ColorApp.white,
-          filled: true,
+          fillColor: fillColor,
+          filled: filled,
           enabledBorder: CustomBorder.defaultBorder(),
           focusedBorder: CustomBorder.defaultBorder(
               color: ColorApp.green, width: 1, radius: 15),
@@ -52,6 +56,11 @@ class CustomTextFieldWidgets extends StatelessWidget {
           hintStyle: const TextStyle(
             color: ColorApp.black,
           ),
+          suffixIcon: InkWell(
+              onTap: () {
+                controller!.clear();
+              },
+              child: const Icon(Icons.delete)),
           labelText: labelText,
         ),
       ),

@@ -10,3 +10,4 @@ void main() {
   initServiseLocator();
   runApp(const AppShop());
 }
+

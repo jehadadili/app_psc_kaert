@@ -18,9 +18,22 @@ class RegisterError extends RegisterState {
   RegisterError({required this.error});
 }
 
-class ChoesImage extends RegisterState{}
-class ChoesImageError extends RegisterState{
-   final String error;
+class LoginSuccess extends RegisterState {
+  final String message;
+
+  LoginSuccess({required this.message});
+}
+
+class LoginError extends RegisterState{
+  final RegisterModeal registerModeal;
+
+  LoginError({required this.registerModeal});
+}
+
+class ChoesImage extends RegisterState {}
+
+class ChoesImageError extends RegisterState {
+  final String error;
 
   ChoesImageError({required this.error});
 }

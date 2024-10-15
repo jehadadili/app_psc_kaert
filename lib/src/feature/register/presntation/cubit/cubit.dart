@@ -82,12 +82,12 @@ class RegisterCubit extends Cubit<RegisterState> {
       email: email,
       password: password,
     );
-    data.fold((f) {
-      log(f.toString());
-      emit(RegisterError(error: f.toString()));
-    }, (sussecc) {
-      log(sussecc.message.toString());
-      emit(RegisterSuccess(registerModeal: sussecc));
+    data.fold((success) {
+      log(success.toString());
+      emit(LoginSuccess(message: success.toString()));
+    }, (error) {
+      log(error.message.toString());
+      emit(LoginError(registerModeal: error));
     });
   }
 }

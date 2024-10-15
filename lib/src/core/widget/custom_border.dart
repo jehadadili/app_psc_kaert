@@ -3,7 +3,7 @@ import 'package:market/src/core/style/color/color_app.dart';
 
 class CustomBorder {
   static OutlineInputBorder defaultBorder({
-    Color color = ColorApp.white,
+    Color color = ColorApp.charcoalBlue,
     double width = 2,
     double radius = 10,
   }) {

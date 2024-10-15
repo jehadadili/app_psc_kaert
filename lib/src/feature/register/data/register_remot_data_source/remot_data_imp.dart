@@ -52,6 +52,7 @@ class RemotDataImp implements RemotDataSourceregister {
   Future<Either<Failure, RegisterModeal>> login(
       {required String email, required String password}) async {
     try {
+       dio.interceptors.add(LogInterceptor(responseBody: true));
       var respone = await dio.post(Endpont.login, data: {
         "email": email,
         "password": password,
