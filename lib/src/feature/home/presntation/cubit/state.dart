@@ -1,19 +1,19 @@
 import 'package:market/src/feature/home/domain/model/home_model.dart';
 
-abstract class LabtopState {}
+abstract class LaptopState {}
 
-class LabtopInitial extends LabtopState {}
+class LaptopInitial extends LaptopState {}
 
-class LabtopLoading extends LabtopState {}
+class LaptopLoading extends LaptopState {}
 
-class LabtopSuccess extends LabtopState {
+class LaptopSuccess extends LaptopState {
   final List<HomeModel> lab;
 
-  LabtopSuccess({required this.lab});
+  LaptopSuccess({required this.lab});
 }
 
-class LabtopFulier extends LabtopState {
+class LaptopFulier extends LaptopState {
   final String error;
 
-  LabtopFulier({required this.error});
+  LaptopFulier({required this.error});
 }

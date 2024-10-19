@@ -24,15 +24,16 @@ class HomeModel {
 
   factory HomeModel.fromjson(Map<String, dynamic> json) {
     return HomeModel(
-        id: json["_id"],
-        status: json["status"],
-        category: json["category"],
-        name: json["name"],
-        price: json["price"],
-        description: json["description"],
-        image: json["image"],
-        images: json["images"],
-        company: json["company"],
-        sales: json["sales"]);
+      id: json["_id"] ?? "",
+      status: json["status"] ?? "",
+      category: json["category"] ?? "",
+      name: json["name"] ?? "",
+      price: (json["price"] ?? 0).toDouble(),
+      description: json["description"] ?? "",
+      image: json["image"] ?? "",
+      images: List<String>.from(json["images"] ?? []),
+      company: json["company"] ?? "",
+      sales: (json["sales"] ?? 0).toDouble(),
+    );
   }
 }
