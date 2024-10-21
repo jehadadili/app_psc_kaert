@@ -22,7 +22,7 @@ class HomeModel {
       required this.company,
       required this.sales});
 
-  factory HomeModel.fromjson(Map<String, dynamic> json) {
+  factory HomeModel.fromJson(Map<String, dynamic> json) {
     return HomeModel(
       id: json["_id"] ?? "",
       status: json["status"] ?? "",

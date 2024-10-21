@@ -17,3 +17,5 @@ class LaptopFulier extends LaptopState {
 
   LaptopFulier({required this.error});
 }
+
+class ChangeColor extends LaptopState {}

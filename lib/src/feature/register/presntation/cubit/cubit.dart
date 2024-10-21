@@ -28,7 +28,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     required password,
     required token,
   }) async {
-    try {
+     {
       emit(RegisterLoading());
       var respone = await addUserUseCase.addUserUsecaseRegister(
         name: name,
@@ -40,17 +40,15 @@ class RegisterCubit extends Cubit<RegisterState> {
         password: password,
         token: token,
       );
-      if (kDebugMode) {
-        log(respone.user!.name.toString());
-        log(respone.status.toString());
-      }
-      emit(RegisterSuccess(registerModeal: respone));
-    } catch (error) {
-      log(error.toString());
-      emit(RegisterError(error: "failure error this $error ".toString()));
-    }
+    respone.fold((success) {
+      log(success.toString());
+      emit(RegisterSuccess(message: success.toString()));
+    }, (error) {
+      log(error.message.toString());
+      emit(RegisterError(registerModeal: error));
+    });
   }
-
+}
   ImagePicker picker = ImagePicker();
 
   File? image;

@@ -11,7 +11,7 @@ import 'package:market/src/feature/register/domain/model/register_modeal.dart';
 class RemotDataImp implements RemotDataSourceregister {
   final Dio dio = Dio();
   @override
-  Future<RegisterModeal> addUserRemotDataSource({
+ Future<Either<Failure, RegisterModeal>> addUserRemotDataSource({
     required String name,
     required String email,
     required String phone,
@@ -37,7 +37,7 @@ class RemotDataImp implements RemotDataSourceregister {
         log(response.toString());
         var data = response.data;
         var user = RegisterModeal.fromejson(data);
-        return user;
+        return right(user);
       } else {
         return Future.error(ServerFailuer(
             errormasseig:

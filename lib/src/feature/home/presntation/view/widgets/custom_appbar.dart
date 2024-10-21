@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/style/color/color_app.dart';
+import 'package:market/src/core/widget/custom_animation_text.dart';
 
 import '../../../../../core/style/image/image_app.dart';
 
@@ -11,7 +12,7 @@ class CustomContainerAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: ColorApp.charcoalBlue,
+          color: Colors.indigo,
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30.r),
               bottomRight: Radius.circular(30.r))),
@@ -28,19 +29,10 @@ class CustomContainerAppbar extends StatelessWidget {
                   ImageApp.logo1,
                   width: 60.w,
                 ),
-                Text(
-                  "PSD",
-                  style: TextStyle(
-                      color: ColorApp.white,
-                      fontSize: 25.sp,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "KART",
-                  style: TextStyle(
-                      color: ColorApp.bluedark,
-                      fontSize: 25.sp,
-                      fontWeight: FontWeight.bold),
+                CustomAnimationText(
+                  fontSize: 25.sp,
+                  text: "PSDKART",
+                  color: ColorApp.white,
                 ),
                 const Spacer(),
                 IconButton(

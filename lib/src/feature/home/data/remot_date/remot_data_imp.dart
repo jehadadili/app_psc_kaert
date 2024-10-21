@@ -24,7 +24,7 @@ class LaptopRemotDataImp implements LaptopReomtData {
 
           var data = response.data["product"] as List;
           List<HomeModel> listlaptop =
-              data.map((item) => HomeModel.fromjson(item)).toList();
+              data.map((item) => HomeModel.fromJson(item)).toList();
 
           return Right(listlaptop);
         } else {

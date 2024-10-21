@@ -3,7 +3,7 @@ import 'package:market/src/core/errors/failure.dart';
 import 'package:market/src/feature/register/domain/model/register_modeal.dart';
 
 abstract class RemotDataSourceregister {
-  Future<RegisterModeal> addUserRemotDataSource({
+ Future<Either<Failure, RegisterModeal>> addUserRemotDataSource({
     required String name,
     required String email,
     required String phone,

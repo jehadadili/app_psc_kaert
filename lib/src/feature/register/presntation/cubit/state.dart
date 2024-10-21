@@ -7,15 +7,14 @@ class RegisterInitial extends RegisterState {}
 class RegisterLoading extends RegisterState {}
 
 class RegisterSuccess extends RegisterState {
-  final RegisterModeal registerModeal;
-
-  RegisterSuccess({required this.registerModeal});
+  final String message;
+  RegisterSuccess({required this.message});
 }
 
 class RegisterError extends RegisterState {
-  final String error;
+  final RegisterModeal registerModeal;
 
-  RegisterError({required this.error});
+  RegisterError({required this.registerModeal});
 }
 
 class LoginSuccess extends RegisterState {
@@ -24,7 +23,7 @@ class LoginSuccess extends RegisterState {
   LoginSuccess({required this.message});
 }
 
-class LoginError extends RegisterState{
+class LoginError extends RegisterState {
   final RegisterModeal registerModeal;
 
   LoginError({required this.registerModeal});

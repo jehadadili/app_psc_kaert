@@ -5,25 +5,35 @@ import 'package:market/src/feature/home/domain/use_case/use_case.dart';
 import 'package:market/src/feature/home/presntation/cubit/state.dart';
 
 class LaptopCubit extends Cubit<LaptopState> {
-  LaptopCubit get(context) => BlocProvider.of(context);
   final LaptopUseCase laptopUseCasehome;
+  static LaptopCubit get(context) => BlocProvider.of(context);
+
   LaptopCubit({required this.laptopUseCasehome}) : super(LaptopInitial());
-  laptopcubit() {
+
+  void fetchLaptops() async {
     emit(LaptopLoading());
-    var product = laptopUseCasehome.laptopuseCase();
-    product.then(
-      (value) {
-        log("======================================");
-        log(value.toString());
-        value.fold((fulier) {
-          log("احنا واقفين في ال cubit");
-          log(fulier.toString());
-          emit(LaptopFulier(error: fulier.toString()));
-        }, (success) {
-          log("احنا واقفين في ال cubit");
-          emit(LaptopSuccess(lab: success));
-        });
+
+    var product = await laptopUseCasehome.laptopuseCase();
+
+    product.fold(
+      (failure) {
+        log("Error in Cubit: ${failure.errormasseig}");
+        emit(LaptopFulier(error: failure.errormasseig ?? "Unknown error"));
+      },
+      (success) {
+        log("Data fetched successfully in Cubit");
+        emit(LaptopSuccess(lab: success));
       },
     );
+  }
+
+  bool iconfav = true;
+  String idstate = "";
+  changeColor({required String id}) {
+    iconfav = false;
+    idstate = id;
+    fetchLaptops();
+    emit(ChangeColor());
+    emit(LaptopLoading());
   }
 }

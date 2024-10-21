@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import 'package:market/src/core/errors/failure.dart';
 import 'package:market/src/feature/register/domain/model/register_modeal.dart';
 import 'package:market/src/feature/register/domain/repository/repository_register.dart';
 
@@ -8,7 +10,7 @@ class AddUserUseCase {
     required this.repositoryRegister,
   });
 
-  Future<RegisterModeal> addUserUsecaseRegister({
+  Future<Either<Failure, RegisterModeal>> addUserUsecaseRegister({
     required String name,
     required String email,
     required String phone,

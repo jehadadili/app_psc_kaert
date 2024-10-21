@@ -5,6 +5,7 @@ import 'package:market/src/core/block/block_observer.dart';
 import 'package:market/src/core/di/service_locator.dart';
 
 void main() {
+  
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   initServiseLocator();

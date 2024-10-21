@@ -2,12 +2,13 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/feature/home/domain/model/home_model.dart';
+import 'package:market/src/feature/home/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/home/presntation/view/widgets/custom_success.dart';
 
 class BodywidgetSuccess extends StatelessWidget {
-  const BodywidgetSuccess({super.key, required this.listlaptop});
+  const BodywidgetSuccess({super.key, required this.listlaptop, required this.laptopCubit});
   final List<HomeModel> listlaptop;
-
+  final LaptopCubit laptopCubit;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -20,6 +21,7 @@ class BodywidgetSuccess extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 10.h),
             child: CustomSuccess(
+              laptopCubit: laptopCubit,
               homeModel: listlaptop[index],
             ),
           ),

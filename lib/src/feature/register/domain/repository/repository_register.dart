@@ -3,7 +3,7 @@ import 'package:market/src/core/errors/failure.dart';
 import 'package:market/src/feature/register/domain/model/register_modeal.dart';
 
 abstract class RepositoryRegister {
-  Future<RegisterModeal> addUser({
+ Future<Either<Failure, RegisterModeal>> addUser({
     required String name,
     required String email,
     required String phone,

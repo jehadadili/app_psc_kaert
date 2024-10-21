@@ -19,16 +19,14 @@ class LaptopRepoImpl implements ReopHome {
   Future<Either<Failure, List<HomeModel>>> getlaptop() async {
     try {
       if (await networkInfoImpl.isconected) {
-        var respone = await laptopRemotDataImp.getlaptop();
-        return respone;
+        var response = await laptopRemotDataImp.getlaptop();
+        return response;
       } else {
-        throw Exception("feild jehad");
+        return Left(ServerFailuer(errormasseig: "No internet connection"));
       }
     } catch (error) {
-      print("====================================");
-      log(error.toString());
-      print("====================================");
-      throw Exception(error.toString());
+      log("Error: $error");
+      return Left(ServerFailuer(errormasseig: "An unexpected error occurred"));
     }
   }
 }

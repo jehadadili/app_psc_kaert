@@ -15,7 +15,7 @@ class RepositoryImpl implements RepositoryRegister {
     required this.remotDataImp,
   });
   @override
-  Future<RegisterModeal> addUser({
+ Future<Either<Failure, RegisterModeal>> addUser({
     required String name,
     required String email,
     required String phone,
