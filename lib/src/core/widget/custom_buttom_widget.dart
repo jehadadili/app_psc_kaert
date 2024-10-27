@@ -4,22 +4,32 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../style/color/color_app.dart';
 
 class CustomButtomWidget extends StatelessWidget {
-  const CustomButtomWidget(
-      {super.key, this.onPressed, required this.text, required this.icon});
+  const CustomButtomWidget({
+    super.key,
+    this.onPressed,
+    required this.text,
+    required this.icon,
+    required this.color,
+    required this.horizontal,
+    required this.vertical,
+  });
   final void Function()? onPressed;
   final String text;
   final IconData icon;
+  final Color color;
+  final double horizontal;
+  final double vertical;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: horizontal, vertical: 10.h),
       child: MaterialButton(
         onPressed: onPressed,
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(10.r),
           decoration: BoxDecoration(
-            color: ColorApp.red,
-            borderRadius: BorderRadius.circular(25),
+            color: color,
+            borderRadius: BorderRadius.circular(25.r),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

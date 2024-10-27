@@ -14,9 +14,10 @@ class CustomTextFieldWidgets extends StatelessWidget {
     this.keyboardType,
     this.filled,
     this.fillColor,
+    this.enabled, // إضافة هذا المتغير
   });
-  final String hintText;
 
+  final String hintText;
   final String labelText;
   final Widget prefixIcon;
   final String? Function(String?) validator;
@@ -24,6 +25,8 @@ class CustomTextFieldWidgets extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool? filled;
   final Color? fillColor;
+  final bool? enabled; // المتغير الجديد للتحكم في التفعيل/التعطيل
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,6 +37,7 @@ class CustomTextFieldWidgets extends StatelessWidget {
         controller: controller,
         validator: validator,
         keyboardType: keyboardType,
+        enabled: enabled, // تفعيل/تعطيل الحقل بناءً على المتغير
         decoration: InputDecoration(
           fillColor: fillColor,
           filled: filled,
@@ -56,11 +60,6 @@ class CustomTextFieldWidgets extends StatelessWidget {
           hintStyle: const TextStyle(
             color: ColorApp.black,
           ),
-          suffixIcon: InkWell(
-              onTap: () {
-                controller!.clear();
-              },
-              child: const Icon(Icons.delete)),
           labelText: labelText,
         ),
       ),

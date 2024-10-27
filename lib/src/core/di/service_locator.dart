@@ -5,17 +5,17 @@ import 'package:market/src/feature/home/data/remot_date/remot_data_imp.dart';
 import 'package:market/src/feature/home/data/repo_imlp/repo_impl.dart';
 import 'package:market/src/feature/home/domain/use_case/use_case.dart';
 import 'package:market/src/feature/home/presntation/cubit/cubit.dart';
-import 'package:market/src/feature/register/data/register_remot_data_source/remot_data_imp.dart';
-import 'package:market/src/feature/register/data/repository_impl/repository_impl.dart';
-import 'package:market/src/feature/register/domain/use_case/use_case_login.dart';
-import 'package:market/src/feature/register/domain/use_case/use_case_register.dart';
-import 'package:market/src/feature/register/presntation/cubit/cubit.dart';
+import 'package:market/src/feature/auth/data/auth_remot_data_source/remot_data_imp.dart';
+import 'package:market/src/feature/auth/data/repository_impl/repository_impl.dart';
+import 'package:market/src/feature/auth/domain/use_case/use_case_login.dart';
+import 'package:market/src/feature/auth/domain/use_case/use_case_register.dart';
+import 'package:market/src/feature/auth/presntation/cubit/cubit.dart';
 
 final GetIt sl = GetIt.instance;
 
 Future<void> initServiseLocator() async {
   sl.registerLazySingleton(
-    () => RegisterCubit(
+    () => AuthCubit(
         addUserUseCase: sl.get<AddUserUseCase>(),
         useCaseLogin: sl.get<UseCaseLogin>()),
   );

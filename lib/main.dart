@@ -8,6 +8,7 @@ void main() {
   
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
+  
   initServiseLocator();
   runApp(const AppShop());
 }

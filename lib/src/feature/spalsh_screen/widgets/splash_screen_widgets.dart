@@ -28,7 +28,7 @@ class SplashScreenWidgets extends StatelessWidget {
             children: [
               Image.asset(
                 ImageApp.logo,
-                width: 200.w, 
+                width: 200.w,
                 height: 200.h,
               ),
               SizedBox(
