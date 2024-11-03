@@ -1,11 +1,13 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/di/service_locator.dart';
+import 'package:market/src/feature/cart/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/favorite/presntion/cubit/cubit.dart';
 import 'package:market/src/feature/auth/presntation/cubit/cubit.dart';
+import 'package:market/src/feature/home/presntation/view/screen/home_screen.dart';
 import 'package:market/src/feature/search/cubit/cubit.dart';
-import 'package:market/src/feature/spalsh_screen/screen/splash_screen.dart';
 
 class AppShop extends StatelessWidget {
   const AppShop({super.key});
@@ -28,14 +30,20 @@ class AppShop extends StatelessWidget {
             BlocProvider(
               create: (context) => SearchCubit(),
             ),
+            BlocProvider(
+              create: (context) => sl.get<CartCubit>(),
+            ),
           ],
           child: MaterialApp(
+            useInheritedMediaQuery: true,
+            locale: DevicePreview.locale(context),
+            builder: DevicePreview.appBuilder,
             debugShowCheckedModeBanner: false,
             home: child,
           ),
         );
       },
-      child: const SplashScreen(),
+      child: const HomeScreen(),
     );
   }
 }

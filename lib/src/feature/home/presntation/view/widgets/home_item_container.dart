@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/style/color/color_app.dart';
+import 'package:market/src/feature/cart/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/home/domain/model/home_model.dart';
 import 'package:market/src/feature/home/presntation/view/widgets/custom_icon_favorite.dart';
 
@@ -69,7 +71,8 @@ class HomeItemContainer extends StatelessWidget {
                 CustomIconFavorite(homeModel: homeModel),
                 IconButton(
                   onPressed: () {
-                    // Add to cart action
+                    BlocProvider.of<CartCubit>(context)
+                        .addCart(id: homeModel.id);
                   },
                   icon: const Icon(
                     Icons.shopping_cart,

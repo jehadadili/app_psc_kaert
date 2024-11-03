@@ -1,18 +1,17 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/style/color/color_app.dart';
+import 'package:market/src/feature/cart/domain/model/cart_model.dart';
 
 class CartSummaryWidget extends StatelessWidget {
-  final int itemCount;
-  final double totalPrice;
-  final double discount;
-
   const CartSummaryWidget({
     super.key,
-    required this.itemCount,
-    required this.totalPrice,
-    required this.discount,
+    required this.text,
+    required this.cartModel,
   });
+  final String text;
+  final CartModel cartModel;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class CartSummaryWidget extends StatelessWidget {
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
             blurRadius: 8,
-            offset: Offset(0, -2),
+            offset: const Offset(0, -2),
           ),
         ],
       ),
@@ -35,14 +34,14 @@ class CartSummaryWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Items: $itemCount",
+                text,
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               Text(
-                "Total: \$${totalPrice - discount}",
+                "Total: \$${cartModel.totalPrice - cartModel.sales}",
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
@@ -52,7 +51,6 @@ class CartSummaryWidget extends StatelessWidget {
             ],
           ),
           SizedBox(height: 8.h),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -65,7 +63,7 @@ class CartSummaryWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "-\$${discount.toStringAsFixed(2)}",
+                "-\$${cartModel.sales}",
                 style: TextStyle(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
@@ -75,8 +73,6 @@ class CartSummaryWidget extends StatelessWidget {
             ],
           ),
           SizedBox(height: 16.h),
-
-          // زر الإكمال
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorApp.blue,
@@ -86,7 +82,7 @@ class CartSummaryWidget extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              // وظيفة الزر
+              // Add button functionality
             },
             child: Text(
               "Checkout",

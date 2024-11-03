@@ -36,6 +36,4 @@ class HomeModel {
       sales: (json["sales"] ?? 0).toDouble(),
     );
   }
-
-  get reviews => null;
 }

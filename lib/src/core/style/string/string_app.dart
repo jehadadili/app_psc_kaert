@@ -4,7 +4,7 @@ class StringApp {
   static const String hintName = "Please enter user name";
 
   // Email
-  static const String labelEmail = "Email";
+  static const String labelEmail = "5";
   static const String hintEmail = "Please enter your email";
 
   // Phone Number

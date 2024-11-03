@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/style/color/color_app.dart';
+import 'package:market/src/feature/cart/domain/model/cart_model.dart';
 
 class CustomItemCart extends StatelessWidget {
   const CustomItemCart({
-    super.key,
+    super.key, required this.cartModel,
   });
+    final CartModel cartModel;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -13,7 +16,7 @@ class CustomItemCart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            " Dell XPS 13",
+            cartModel.name,
             style: TextStyle(
               color: ColorApp.blue,
               fontWeight: FontWeight.bold,
@@ -24,7 +27,7 @@ class CustomItemCart extends StatelessWidget {
             height: 10.h,
           ),
           Text(
-            "Dell",
+            cartModel.company,
             style: TextStyle(
               color: Colors.grey,
               fontWeight: FontWeight.bold,
@@ -33,7 +36,7 @@ class CustomItemCart extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
           Text(
-            "\$ 30.819",
+            "\$ ${cartModel.price}",
             style: TextStyle(
               color: ColorApp.black,
               fontWeight: FontWeight.bold,

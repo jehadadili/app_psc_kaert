@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/feature/detils/presntation/view/widgets/detailed_info_widget.dart';
 import 'package:market/src/feature/detils/presntation/view/widgets/hero_tag.dart';
 import 'package:market/src/feature/detils/presntation/view/widgets/hero_widget.dart';
@@ -14,40 +15,34 @@ class DetailPage extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        extendBodyBehindAppBar: true,
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: ColorApp.white,
+      appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          title: const Text('Moor Detils'),
-          centerTitle: true,
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: Navigator.of(context).pop,
+        title: const Text('Moor Detils'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: Navigator.of(context).pop,
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          HeroWidget(
+            tag: HeroTag.image(homeModel.image),
+            child: Image.network(
+              homeModel.image,
+              width: 150,
+              height: 150,
             ),
-            const SizedBox(width: 10)
-          ],
-          leading: const Icon(Icons.search_outlined),
-        ),
-        body: Column(
-          children: [
-            Expanded(
-              flex: 4,
-              child: SizedBox.expand(
-                child: HeroWidget(
-                  tag: HeroTag.image(homeModel.image),
-                  child: Image.network(
-                    homeModel.image,
-                    width: 150,
-                    height: 150,
-                  ),
-                ),
-              ),
-            ),
-            DetailedInfoWidget(homeModel: homeModel),
-          ],
-        ),
-      );
+          ),
+          DetailedInfoWidget(homeModel: homeModel),
+        ],
+      ),
+    );
+  }
 }
