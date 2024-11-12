@@ -12,7 +12,6 @@ import 'package:market/src/feature/auth/presntation/view/screen/register/screen/
 
 import '../../../../../../../core/widget/auth_action_row.dart';
 import '../../../../../../../core/widget/container_widgets.dart';
-import '../../../../../../../core/widget/custom_animation_text.dart';
 import '../../../../../../../core/widget/custom_buttom_widget.dart';
 import '../../../../../../../core/widget/custom_widget_loading.dart';
 
@@ -64,10 +63,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               SizedBox(
                                 height: 15.h,
                               ),
-                              const CustomAnimationText(
-                                text: 'Login',
-                                fontSize: 40,
-                              ),
+                              // const CustomAnimationText(
+                              //   text: 'Login',
+                              //   fontSize: 40,
+                              // ),
                               CustomLoginTextField(
                                 emailController: emailController,
                                 passwordController: passwordController,

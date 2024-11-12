@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/extation/extation_navgter.dart';
+import 'package:market/src/core/helper/cashe_helper.dart';
 import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/core/style/image/image_app.dart';
 import 'package:market/src/core/style/string/string_app.dart';
+import 'package:market/src/core/value/value.dart';
 import 'package:market/src/core/widget/auth_action_row.dart';
-import 'package:market/src/core/widget/custom_animation_text.dart';
 import 'package:market/src/core/widget/custom_buttom_widget.dart';
 import 'package:market/src/core/widget/custom_widget_loading.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/login/screen/login_screen.dart';
@@ -63,11 +64,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       padding: EdgeInsets.all(25.w),
                       child: Row(
                         children: [
-                          const CustomAnimationText(
-                            text: 'Register',
-                            color: ColorApp.white,
-                            fontSize: 30,
-                          ),
+                          // const CustomAnimationText(
+                          //   text: 'Register',
+                          //   color: ColorApp.white,
+                          //   fontSize: 30,
+                          // ),
                           Image.asset(
                             ImageApp.logo,
                             width: 150.w,
@@ -128,7 +129,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           password: passwordController.text,
                                           token: tokenController.text,
                                         );
+                                        FocusScope.of(context).unfocus();
                                       }
+                                      CasheHelper.saveData(
+                                          key: keyauthid,
+                                          value: idController.text);
                                     },
                                   ),
                                   AuthActionRow(

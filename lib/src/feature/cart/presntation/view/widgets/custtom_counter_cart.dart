@@ -22,7 +22,8 @@ class _CustomCounterCartState extends State<CustomCounterCart> {
   @override
   void initState() {
     super.initState();
-    _textController = TextEditingController(text: widget.cartModel.countInStock.toString());
+    _textController =
+        TextEditingController(text: widget.cartModel.countInStock.toString());
   }
 
   @override
@@ -41,7 +42,9 @@ class _CustomCounterCartState extends State<CustomCounterCart> {
             setState(() {
               if (isEditing) {
                 // حفظ التعديلات عندما يكون في وضع الحفظ
-                widget.cartModel.countInStock = int.tryParse(_textController.text) ?? widget.cartModel.countInStock;
+                widget.cartModel.countInStock =
+                    int.tryParse(_textController.text) ??
+                        widget.cartModel.quantity;
               }
               // تبديل حالة التعديل
               isEditing = !isEditing;

@@ -73,6 +73,7 @@ class HomeItemContainer extends StatelessWidget {
                   onPressed: () {
                     BlocProvider.of<CartCubit>(context)
                         .addCart(id: homeModel.id);
+                    
                   },
                   icon: const Icon(
                     Icons.shopping_cart,

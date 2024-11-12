@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:market/src/core/api/endpont.dart';
@@ -9,9 +8,14 @@ import 'package:market/src/feature/auth/data/auth_remot_data_source/remot_data.d
 import 'package:market/src/feature/auth/domain/model/register_modeal.dart';
 
 class RemotDataImp implements RemotDataSourceAuth {
-  final Dio dio = Dio();
+  final Dio dio;
+
+  RemotDataImp() : dio = Dio() {
+    dio.interceptors.add(LogInterceptor(responseBody: true));
+  }
+
   @override
- Future<Either<Failure, AuthModeal>> addUserRemotDataSource({
+  Future<Either<Failure, AuthModeal>> addUserRemotDataSource({
     required String name,
     required String email,
     required String phone,
@@ -22,7 +26,6 @@ class RemotDataImp implements RemotDataSourceAuth {
     required String token,
   }) async {
     try {
-      dio.interceptors.add(LogInterceptor(responseBody: true));
       var response = await dio.post(Endpont.register, data: {
         "name": name,
         "email": email,
@@ -33,38 +36,43 @@ class RemotDataImp implements RemotDataSourceAuth {
         "password": password,
         "token": token,
       });
+
       if (response.statusCode == 200 || response.statusCode == 201) {
         log(response.toString());
         var data = response.data;
         var user = AuthModeal.fromejson(data);
         return right(user);
       } else {
-        return Future.error(ServerFailuer(
-            errormasseig:
-                "this is error ???  ${response.statusCode} :  ${response.statusMessage}"));
+        return left(ServerFailuer(
+          errormasseig:
+              "Error ${response.statusCode} : ${response.statusMessage}",
+        ));
       }
     } catch (error) {
-      return Future.error("this is error ???  $error");
+      return left(ServerFailuer(errormasseig: error.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, AuthModeal>> login(
-      {required String email, required String password}) async {
+  Future<Either<Failure, AuthModeal>> login({
+    required String email,
+    required String password,
+  }) async {
     try {
-       dio.interceptors.add(LogInterceptor(responseBody: true));
-      var respone = await dio.post(Endpont.login, data: {
+      var response = await dio.post(Endpont.login, data: {
         "email": email,
         "password": password,
       });
-      log(respone.statusCode.toString());
-      log(respone.data.toString());
-      if (respone.statusCode == 200 || respone.statusCode == 201) {
-        var data = respone.data;
+
+      log(response.statusCode.toString());
+      log(response.data.toString());
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var data = response.data;
         var userLogin = AuthModeal.fromejson(data);
         return right(userLogin);
       } else {
-        throw ServerFailuer(errormasseig: "opps Unknown error");
+        return left(ServerFailuer(errormasseig: "Unknown error occurred"));
       }
     } catch (error) {
       return left(ServerFailuer(errormasseig: error.toString()));

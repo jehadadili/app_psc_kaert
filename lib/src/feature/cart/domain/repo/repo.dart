@@ -6,4 +6,6 @@ abstract class RepoCart {
   addCart({required String id});
 
   Future<Either<Failure, List<CartModel>>> getCart();
+
+  //deletcart({required String nationalId, required String productId});
 }

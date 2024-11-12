@@ -5,4 +5,5 @@ class Endpont {
   static String getlaptop = "$buseurl/product/Laptops";
   static String addCart = "$buseurl/cart/add";
   static String getCart = "$buseurl/cart/allProducts";
+  static String deletCart = "$buseurl/cart/delete";
 }

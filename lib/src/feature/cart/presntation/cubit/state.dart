@@ -20,3 +20,12 @@ class FilerCart extends CartState {
 
   FilerCart({required this.maesige});
 }
+
+class DeletSuccess extends CartState {}
+
+class DeletLoading extends CartState {}
+class DeletCart extends CartState {
+  final String maesige;
+
+  DeletCart({required this.maesige});
+}

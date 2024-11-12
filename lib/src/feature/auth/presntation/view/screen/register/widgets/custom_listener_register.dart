@@ -13,7 +13,7 @@ listener(BuildContext context, AuthState state) {
           text: state.registerModeal.message ?? "error status",
           context: context);
     }
-  } else if (state is LoginSuccess) {
+  } else if (state is RegisterSuccess) {
     showSnackBar(
         color: ColorApp.green,
         text: "User logged in successfully",

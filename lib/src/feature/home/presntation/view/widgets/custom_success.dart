@@ -16,14 +16,25 @@ class CustomSuccess extends StatelessWidget {
     return Card(
       elevation: 10,
       color: Colors.white,
-      child: Row(
-        children: [
-          ImageProductCard(homeModel: homeModel),
-          SizedBox(width: 7.w),
-          HomeItemContainer(
-            homeModel: homeModel,
-          )
-        ],
+      margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+      child: Padding(
+        padding: EdgeInsets.all(8.r),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              flex: 3,
+              child: ImageProductCard(homeModel: homeModel),
+            ),
+            SizedBox(width: 7.w),
+            Expanded(
+              flex: 7,
+              child: HomeItemContainer(
+                homeModel: homeModel,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

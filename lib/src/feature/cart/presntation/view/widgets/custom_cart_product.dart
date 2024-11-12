@@ -7,7 +7,8 @@ import 'package:market/src/feature/cart/presntation/view/widgets/image_product_c
 
 class CustomCartProduct extends StatelessWidget {
   const CustomCartProduct({
-    super.key, required this.cartModel,
+    super.key,
+    required this.cartModel,
   });
   final CartModel cartModel;
   @override
@@ -22,18 +23,18 @@ class CustomCartProduct extends StatelessWidget {
         ),
         child: SizedBox(
           width: 330.w,
-          height: 120.h,
-          child:  Row(
+          height: 140.h,
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ImageProductCart(
-                 cartModel: cartModel,
+                cartModel: cartModel,
               ),
               CustomItemCart(
-                 cartModel: cartModel,
+                cartModel: cartModel,
               ),
               CustomCounterCart(
-                 cartModel: cartModel,
+                cartModel: cartModel,
               )
             ],
           ),

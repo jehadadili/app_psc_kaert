@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/feature/cart/domain/model/cart_model.dart';
+import 'package:market/src/feature/cart/presntation/cubit/cubit.dart';
 
 class CustomItemCart extends StatelessWidget {
   const CustomItemCart({
-    super.key, required this.cartModel,
+    super.key,
+    required this.cartModel,
   });
-    final CartModel cartModel;
+  final CartModel cartModel;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +46,12 @@ class CustomItemCart extends StatelessWidget {
               fontSize: 15.sp,
             ),
           ),
+          IconButton(
+              onPressed: () {
+                BlocProvider.of<CartCubit>(context)
+                    .deletcart(productId: cartModel.id);
+              },
+              icon: Icon(Icons.delete))
         ],
       ),
     );

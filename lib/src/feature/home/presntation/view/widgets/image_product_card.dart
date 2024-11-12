@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/extation/extation_navgter.dart';
@@ -23,18 +24,16 @@ class ImageProductCard extends StatelessWidget {
               ),
             );
           },
-          child: Hero(
-            tag: homeModel.images.isNotEmpty
-                ? homeModel.images[0]
-                : '', // تأكد من وجود الصورة
+      //    child: Hero(
+        //    tag: homeModel.images.isNotEmpty ? homeModel.images[0] : '',
             child: Padding(
               padding: EdgeInsets.all(5.r),
               child: Column(
                 children: [
-                  Image.network(
-                    homeModel.image,
+                  CachedNetworkImage(
+                    imageUrl: homeModel.image,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
+                    errorWidget: (context, url, error) {
                       return const Icon(Icons.broken_image);
                     },
                   ),
@@ -57,7 +56,7 @@ class ImageProductCard extends StatelessWidget {
             ),
           ),
         ),
-      ),
+
     );
   }
 }
