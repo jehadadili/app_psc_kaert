@@ -13,10 +13,11 @@ void main() async {
   await CasheHelper.init();
   initServiseLocator();
   runApp(
-       DevicePreview(
-       enabled: !kReleaseMode,
-       builder: (context) =>
+    // DevicePreview(
+    // enabled: !kReleaseMode,
+    // builder: (context) =>
     const AppShop(),
-     )
+    //  )
   );
+  
 }
