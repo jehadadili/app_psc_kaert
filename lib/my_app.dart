@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/di/service_locator.dart';
-import 'package:market/src/feature/auth/presntation/view/screen/login/screen/login_screen.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/register/screen/register_screen.dart';
 import 'package:market/src/feature/cart/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/favorite/presntion/cubit/cubit.dart';
