@@ -28,7 +28,7 @@ class AuthCubit extends Cubit<AuthState> {
     required password,
     required token,
   }) async {
-     {
+    {
       emit(RegisterLoading());
       var respone = await addUserUseCase.addUserUsecaseRegister(
         name: name,
@@ -40,15 +40,16 @@ class AuthCubit extends Cubit<AuthState> {
         password: password,
         token: token,
       );
-    respone.fold((success) {
-      log(success.toString());
-      emit(RegisterSuccess(message: success.toString()));
-    }, (error) {
-      log(error.message.toString());
-      emit(RegisterError(registerModeal: error));
-    });
+      respone.fold((success) {
+        log(success.toString());
+        emit(RegisterSuccess(message: success.toString()));
+      }, (error) {
+        log(error.message.toString());
+        emit(RegisterError(registerModeal: error));
+      });
+    }
   }
-}
+
   ImagePicker picker = ImagePicker();
 
   File? image;
@@ -58,7 +59,7 @@ class AuthCubit extends Cubit<AuthState> {
   String userimage = "";
 
   addImage() async {
-    final pickedfile = await picker.pickImage(source: ImageSource.camera);
+    final pickedfile = await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedfile != null) {
       image = File(pickedfile.path);

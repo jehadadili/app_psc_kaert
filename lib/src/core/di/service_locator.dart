@@ -4,7 +4,9 @@ import 'package:market/src/core/network/network_info_impl.dart';
 import 'package:market/src/feature/cart/data/remot_data/remot_data_impl.dart';
 import 'package:market/src/feature/cart/data/repo_imple/repo_imple.dart';
 import 'package:market/src/feature/cart/domain/use_cases/add_cart.dart';
+import 'package:market/src/feature/cart/domain/use_cases/delete_cart.dart';
 import 'package:market/src/feature/cart/domain/use_cases/product_cart.dart';
+import 'package:market/src/feature/cart/domain/use_cases/ubdate_cart.dart';
 import 'package:market/src/feature/cart/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/home/data/remot_date/remot_data_imp.dart';
 import 'package:market/src/feature/home/data/repo_imlp/repo_impl.dart';
@@ -68,12 +70,26 @@ Future<void> initServiseLocator() async {
     () => LaptopRemotDataImp(),
   );
   sl.registerLazySingleton(
-    () => CartCubit(addCartUsecass: sl.get<AddCartUsecass>(),
-    getCartusecass: sl.get<GetCartusecass>()),
+    () => CartCubit(
+        addCartUsecass: sl.get<AddCartUsecass>(),
+        getCartusecass: sl.get<GetCartusecass>(),
+        getDeleteCart: sl.get<GetDeleteCart>(),
+        putUbdateCart: sl.get<PutUbdateCart>()),
   );
   sl.registerLazySingleton(
-    () => GetCartusecass(repoCart: sl.get<RepoCartImple>(),
-  ),
+    () => GetCartusecass(
+      repoCart: sl.get<RepoCartImple>(),
+    ),
+  );
+  sl.registerLazySingleton(
+    () => PutUbdateCart(
+      repoCart: sl.get<RepoCartImple>(),
+    ),
+  );
+  sl.registerLazySingleton(
+    () => GetDeleteCart(
+      repoCart: sl.get<RepoCartImple>(),
+    ),
   );
   sl.registerLazySingleton(
     () => AddCartUsecass(repoCart: sl.get<RepoCartImple>()),

@@ -36,4 +36,36 @@ class RepoCartImple implements RepoCart {
       return Left(ServerFailuer(errormasseig: "An unexpected error occurred"));
     }
   }
+
+  @override
+  deletcart({required String productId}) async {
+    try {
+      if (await networkInfoImpl.isconected) {
+        var response = await remotDataImplCart.deletecart(productId: productId);
+        return response;
+      } else {
+        return (ServerFailuer(errormasseig: "No internet connection"));
+      }
+    } catch (e) {
+      log("Error : $e");
+      return (ServerFailuer(errormasseig: "An unexpected error occurred"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<CartModel>>> ubdatecart(
+      {required String productId, required int quantity}) async {
+    try {
+      if (await networkInfoImpl.isconected) {
+        var response = await remotDataImplCart.ubdatecart(
+            productId: productId, quantity: quantity);
+        return response;
+      } else {
+        return Left(ServerFailuer(errormasseig: "No internet connection"));
+      }
+    } catch (e) {
+      log("Error : $e");
+      return Left(ServerFailuer(errormasseig: "An unexpected error occurred"));
+    }
+  }
 }

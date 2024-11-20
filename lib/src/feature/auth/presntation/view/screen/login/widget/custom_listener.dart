@@ -12,13 +12,13 @@ listener(BuildContext context, AuthState state) {
       showSnackBar(
           color: ColorApp.red,
           text: state.registerModeal.message ?? "error status",
-          context: context);
+          context: context, message: '');
     }
   } else if (state is LoginSuccess) {
     showSnackBar(
         color: ColorApp.green,
         text: "User logged in successfully",
-        context: context);
+        context: context, message: '');
     context.pushReplacement(pushReplacement: const HomeScreen());
   }
 }

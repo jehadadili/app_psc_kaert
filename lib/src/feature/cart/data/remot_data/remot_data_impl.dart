@@ -29,7 +29,7 @@ class RemotDataImplCart implements RemotDatacart {
     try {
       dio.interceptors.add(LogInterceptor(requestBody: true));
       var response = await dio.get(Endpont.getCart, data: {
-        "nationalId":getkry,
+        "nationalId": getkry,
       });
       if (response.statusCode == 200) {
         if (response.data != null && response.data["products"] != null) {
@@ -55,6 +55,40 @@ class RemotDataImplCart implements RemotDatacart {
     } catch (error) {
       log(error.toString());
       return Left(ServerFailuer(errormasseig: "Unexpected error: $error"));
+    }
+  }
+
+  @override
+  deletecart({required String productId}) async {
+    var response = await dio.delete(Endpont.deletCart, data: {
+      "nationalId": getkry,
+      "productId": productId,
+    });
+    if (response.statusCode == 200) {
+      log(response.statusCode.toString());
+      var delete = response.data;
+      log(response.data);
+      return delete;
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<CartModel>>> ubdatecart(
+      {required String productId, required int quantity}) async {
+    var response = await dio.put(Endpont.ubdatecart, data: {
+      "nationalId": getkry,
+      "productId": productId,
+      "quantity": quantity,
+    });
+    if (response.statusCode == 200) {
+      log(response.statusCode.toString());
+      var ubdate = response.data;
+      log(response.data);
+      return Right(ubdate);
+    } else {
+      return Left(ServerFailuer(
+          errormasseig:
+              "Server responded with status code: ${response.statusCode}"));
     }
   }
 }

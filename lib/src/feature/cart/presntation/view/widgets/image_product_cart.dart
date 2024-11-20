@@ -10,7 +10,7 @@ class ImageProductCart extends StatelessWidget {
     return SizedBox(
       width: 130.w,
       child: Image.network(
-        cartModel.image,
+        cartModel.image ?? "",
         width: 230.w,
         height: 200.h,
       ),

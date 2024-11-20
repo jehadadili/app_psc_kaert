@@ -2,13 +2,13 @@ class CartModel {
   final String id;
   final String status;
   final String category;
-  final String name;
-  final double price;
+  final String? name;
+  final double? price;
   final String description;
-  final String image;
+  final String? image;
   final List<String> images;
-  final String company;
-  int countInStock;
+  final String? company;
+ final int? countInStock;
   final int sales;
   final int quantity;
   final double totalPrice;

@@ -2,19 +2,25 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:market/src/core/api/endpont.dart';
-import 'package:market/src/core/value/value.dart';
 import 'package:market/src/feature/cart/domain/use_cases/add_cart.dart';
+import 'package:market/src/feature/cart/domain/use_cases/delete_cart.dart';
 import 'package:market/src/feature/cart/domain/use_cases/product_cart.dart';
+import 'package:market/src/feature/cart/domain/use_cases/ubdate_cart.dart';
 import 'package:market/src/feature/cart/presntation/cubit/state.dart';
 
 class CartCubit extends Cubit<CartState> {
   final AddCartUsecass addCartUsecass;
   final GetCartusecass getCartusecass;
+  final GetDeleteCart getDeleteCart;
+  final PutUbdateCart putUbdateCart;
   final Dio dio = Dio();
   static CartCubit get(context) => BlocProvider.of(context);
 
-  CartCubit({required this.addCartUsecass, required this.getCartusecass})
+  CartCubit(
+      {required this.putUbdateCart,
+      required this.getDeleteCart,
+      required this.addCartUsecass,
+      required this.getCartusecass})
       : super(InitialCart()) {
     cartGet();
   }
@@ -45,23 +51,26 @@ class CartCubit extends Cubit<CartState> {
 
   deletcart({required String productId}) async {
     emit(DeletLoading());
-    var response = await dio.delete(Endpont.deletCart, data: {
-      "nationalId": getkry,
-      "productId": productId,
-    });
+    var response = await getDeleteCart.deletecart(productId: productId);
+    emit(DeletSuccess());
+    cartGet();
+    return response;
+  }
 
-    try {
-      if (response.statusCode == 200) {
-        log(response.statusCode.toString());
-        var delet = response.data;
-        log(response.data.toString());
-        emit(DeletSuccess());
+  ubdatecart({required String productId, required int quantity}) async {
+    emit(UbdateLoading());
+    var ubdate = await putUbdateCart.ubdatecart(
+        productId: productId, quantity: quantity);
+    ubdate.fold(
+      (failure) {
+        log("Error in Cubit: ${failure.errormasseig}");
+        emit(UbdateCartfiler(maesige: failure.errormasseig ?? "Unknown error"));
+      },
+      (success) {
+        log("Data fetched successfully in Cubit");
+        emit(UbdateSuccess(maesige: success));
         cartGet();
-        return Future.value();
-      }
-    } catch (e) {
-      log(e.toString());
-      emit(DeletCart(maesige: e.toString()));
-    }
+      },
+    );
   }
 }

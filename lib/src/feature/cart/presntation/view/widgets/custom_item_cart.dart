@@ -19,7 +19,7 @@ class CustomItemCart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            cartModel.name,
+            cartModel.name ?? "",
             style: TextStyle(
               color: ColorApp.blue,
               fontWeight: FontWeight.bold,
@@ -30,7 +30,7 @@ class CustomItemCart extends StatelessWidget {
             height: 10.h,
           ),
           Text(
-            cartModel.company,
+            cartModel.company ?? "",
             style: TextStyle(
               color: Colors.grey,
               fontWeight: FontWeight.bold,
@@ -39,7 +39,7 @@ class CustomItemCart extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
           Text(
-            "\$ ${cartModel.price}",
+            "\$ ${cartModel.price ?? ""}",
             style: TextStyle(
               color: ColorApp.black,
               fontWeight: FontWeight.bold,

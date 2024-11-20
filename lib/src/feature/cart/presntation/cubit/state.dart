@@ -29,3 +29,16 @@ class DeletCart extends CartState {
 
   DeletCart({required this.maesige});
 }
+class UbdateSuccess extends CartState {
+   final String maesige;
+
+  UbdateSuccess({required this.maesige});
+
+}
+
+class UbdateLoading extends CartState {}
+class UbdateCartfiler extends CartState {
+  final String maesige;
+
+  UbdateCartfiler({required this.maesige});
+}

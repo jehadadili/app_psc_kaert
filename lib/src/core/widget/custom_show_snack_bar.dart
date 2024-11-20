@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 void showSnackBar(
     {required BuildContext context,
     required String text,
-    required Color color}) {
+    required Color color, required String message}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     content: Center(
         child: Text(
