@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:market/src/core/style/image/image_app.dart';
+import 'package:market/src/core/widget/custom_animation_text.dart';
 
 import '../../../../../../../core/style/color/color_app.dart';
 
 class CustomContainerTop extends StatelessWidget {
-  const CustomContainerTop({super.key, this.child});
-  final Widget? child;
+  const CustomContainerTop({super.key});
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,6 +25,22 @@ class CustomContainerTop extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: child);
+        child:  Padding(
+                      padding: EdgeInsets.all(25.w),
+                      child: Row(
+                        children: [
+                          const CustomAnimationText(
+                            text: 'Register',
+                            color: ColorApp.white,
+                            fontSize: 30,
+                          ),
+                          Image.asset(
+                            ImageApp.logo,
+                            width: 150.w,
+                            height: 100.h,
+                          ),
+                        ],
+                      ),
+                    ),);
   }
 }

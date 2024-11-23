@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/extation/extation_navgter.dart';
 import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/core/style/string/string_app.dart';
+import 'package:market/src/core/widget/custom_animation_text.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/login/widget/custom_listener.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/login/widget/custom_login_text_field.dart';
 import 'package:market/src/feature/auth/presntation/cubit/cubit.dart';
@@ -63,10 +64,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               SizedBox(
                                 height: 15.h,
                               ),
-                              // const CustomAnimationText(
-                              //   text: 'Login',
-                              //   fontSize: 40,
-                              // ),
+                              const CustomAnimationText(
+                                text: 'Login',
+                                fontSize: 40,
+                              ),
                               CustomLoginTextField(
                                 emailController: emailController,
                                 passwordController: passwordController,
@@ -92,11 +93,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       password: passwordController.text,
                                     );
                                     FocusScope.of(context).unfocus();
-                                  
                                   }
                                 },
                               ),
-
                               SizedBox(
                                 height: 20.h,
                               ),

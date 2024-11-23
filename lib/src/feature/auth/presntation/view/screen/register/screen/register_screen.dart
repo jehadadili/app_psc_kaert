@@ -4,16 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/extation/extation_navgter.dart';
 import 'package:market/src/core/helper/cashe_helper.dart';
 import 'package:market/src/core/style/color/color_app.dart';
-import 'package:market/src/core/style/image/image_app.dart';
 import 'package:market/src/core/style/string/string_app.dart';
 import 'package:market/src/core/value/value.dart';
 import 'package:market/src/core/widget/auth_action_row.dart';
-import 'package:market/src/core/widget/custom_animation_text.dart';
 import 'package:market/src/core/widget/custom_buttom_widget.dart';
 import 'package:market/src/core/widget/custom_widget_loading.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/login/screen/login_screen.dart';
 import 'package:market/src/feature/auth/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/auth/presntation/cubit/state.dart';
+import 'package:market/src/feature/auth/presntation/view/screen/register/widgets/profile_image_picker.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/register/widgets/custom_colum_text_field.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/register/widgets/custom_container_top.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/register/widgets/custom_listener_register.dart';
@@ -60,25 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             children: [
               Column(
                 children: [
-                  CustomContainerTop(
-                    child: Padding(
-                      padding: EdgeInsets.all(25.w),
-                      child: Row(
-                        children: [
-                          const CustomAnimationText(
-                            text: 'Register',
-                            color: ColorApp.white,
-                            fontSize: 30,
-                          ),
-                          Image.asset(
-                            ImageApp.logo,
-                            width: 150.w,
-                            height: 100.h,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  const CustomContainerTop(),
                   Expanded(
                     child: InkWell(
                       onTap: () {
@@ -159,35 +140,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ],
               ),
-              Positioned(
-                top: 130.h,
-                left: MediaQuery.of(context).size.width / 2 - 50.w,
-                child: cubit.image == null
-                    ? MaterialButton(
-                        onPressed: () {
-                          cubit.addImage();
-                        },
-                        child: Container(
-                          width: 80.w,
-                          height: 80.h,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle, color: Color(0xffEFF1F3)),
-                          child: Icon(
-                            Icons.camera_alt,
-                            size: 45.sp,
-                          ),
-                        ),
-                      )
-                    : Container(
-                        width: 50.w,
-                        height: 50.h,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: FileImage(cubit.image!),
-                          ),
-                        ),
-                      ),
+               ProfileImagePicker(
+                image: cubit.image,
+                onPickImage: () {
+                  cubit.addImage();
+                },
               ),
             ],
           ),
