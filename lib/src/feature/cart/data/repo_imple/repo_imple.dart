@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:market/src/core/errors/failure.dart';
 import 'package:market/src/core/errors/server_failuer.dart';
@@ -14,11 +13,14 @@ class RepoCartImple implements RepoCart {
 
   RepoCartImple(
       {required this.remotDataImplCart, required this.networkInfoImpl});
+
   @override
   addCart({required String id}) async {
     if (await networkInfoImpl.isconected) {
-      var respone = await remotDataImplCart.addCart(id: id);
-      return respone;
+      var response = await remotDataImplCart.addCart(id: id);
+      return response;
+    } else {
+      return Left(ServerFailuer(errormasseig: "No internet connection"));
     }
   }
 
@@ -26,8 +28,8 @@ class RepoCartImple implements RepoCart {
   Future<Either<Failure, List<CartModel>>> getCart() async {
     try {
       if (await networkInfoImpl.isconected) {
-        var respons = await remotDataImplCart.getCart();
-        return respons;
+        var response = await remotDataImplCart.getCart();
+        return response;
       } else {
         return Left(ServerFailuer(errormasseig: "No internet connection"));
       }
@@ -44,11 +46,11 @@ class RepoCartImple implements RepoCart {
         var response = await remotDataImplCart.deletecart(productId: productId);
         return response;
       } else {
-        return (ServerFailuer(errormasseig: "No internet connection"));
+        return Left(ServerFailuer(errormasseig: "No internet connection"));
       }
     } catch (e) {
       log("Error : $e");
-      return (ServerFailuer(errormasseig: "An unexpected error occurred"));
+      return Left(ServerFailuer(errormasseig: "An unexpected error occurred"));
     }
   }
 

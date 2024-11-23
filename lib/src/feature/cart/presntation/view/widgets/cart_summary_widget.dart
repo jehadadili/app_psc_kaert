@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/style/color/color_app.dart';
@@ -10,6 +9,7 @@ class CartSummaryWidget extends StatelessWidget {
     required this.text,
     required this.cartModel,
   });
+
   final String text;
   final CartModel cartModel;
 
@@ -82,7 +82,6 @@ class CartSummaryWidget extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              // Add button functionality
             },
             child: Text(
               "Checkout",

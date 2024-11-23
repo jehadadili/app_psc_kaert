@@ -32,7 +32,7 @@ class DeletCart extends CartState {
 class UbdateSuccess extends CartState {
    final String maesige;
 
-  UbdateSuccess({required this.maesige});
+  UbdateSuccess({required this.maesige, required cartList});
 
 }
 

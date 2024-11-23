@@ -75,20 +75,33 @@ class RemotDataImplCart implements RemotDatacart {
   @override
   Future<Either<Failure, List<CartModel>>> ubdatecart(
       {required String productId, required int quantity}) async {
-    var response = await dio.put(Endpont.ubdatecart, data: {
-      "nationalId": getkry,
-      "productId": productId,
-      "quantity": quantity,
-    });
-    if (response.statusCode == 200) {
-      log(response.statusCode.toString());
-      var ubdate = response.data;
-      log(response.data);
-      return Right(ubdate);
-    } else {
-      return Left(ServerFailuer(
-          errormasseig:
-              "Server responded with status code: ${response.statusCode}"));
+    try {
+      var response = await dio.put(Endpont.ubdatecart, data: {
+        "nationalId": getkry,
+        "productId": productId,
+        "quantity": quantity,
+      });
+
+      log("UpdateCart Response: ${response.data}");
+
+      if (response.statusCode == 200) {
+        log(response.statusCode.toString());
+        var data = response.data["product"];
+        if (data != null) {
+          CartModel updatedProduct = CartModel.fromJson(data);
+         
+          return Right([updatedProduct]); 
+        } else {
+          return Left(ServerFailuer(errormasseig: "No products updated"));
+        }
+      } else {
+        return Left(ServerFailuer(
+            errormasseig:
+                "Server responded with status code: ${response.statusCode}"));
+      }
+    } catch (e) {
+      log("UpdateCart Error: $e");
+      return Left(ServerFailuer(errormasseig: "Error while updating cart"));
     }
   }
 }

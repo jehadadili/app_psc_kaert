@@ -59,7 +59,7 @@ class AuthCubit extends Cubit<AuthState> {
   String userimage = "";
 
   addImage() async {
-    final pickedfile = await picker.pickImage(source: ImageSource.gallery);
+    final pickedfile = await picker.pickImage(source: ImageSource.camera);
 
     if (pickedfile != null) {
       image = File(pickedfile.path);
