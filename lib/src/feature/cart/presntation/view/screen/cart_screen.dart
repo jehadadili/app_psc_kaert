@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/style/color/color_app.dart';
-import 'package:market/src/core/widget/custom_lodaing_home.dart';
 import 'package:market/src/feature/cart/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/cart/presntation/cubit/state.dart';
 import 'package:market/src/feature/cart/presntation/view/widgets/custom_list_view_builder.dart';
@@ -36,7 +35,25 @@ class CartScreen extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is LoadingCart) {
-            return const ShimmerLoading();
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "جاري تحديث البيانات... يرجى الانتظار.",
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      color: ColorApp.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  const CircularProgressIndicator()
+                ],
+              ),
+            );
           } else if (state is SuccessCart) {
             return CustomListViewBuilder(listCart: state.massage);
           } else if (state is FilerCart) {

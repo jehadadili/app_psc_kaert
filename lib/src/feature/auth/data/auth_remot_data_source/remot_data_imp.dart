@@ -4,6 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:market/src/core/api/endpont.dart';
 import 'package:market/src/core/errors/failure.dart';
 import 'package:market/src/core/errors/server_failuer.dart';
+import 'package:market/src/core/helper/cashe_helper.dart';
+import 'package:market/src/core/value/value.dart';
 import 'package:market/src/feature/auth/data/auth_remot_data_source/remot_data.dart';
 import 'package:market/src/feature/auth/domain/model/register_modeal.dart';
 
@@ -41,6 +43,10 @@ class RemotDataImp implements RemotDataSourceAuth {
         log(response.toString());
         var data = response.data;
         var user = AuthModeal.fromejson(data);
+        var value =
+            CasheHelper.saveData(key: keyjehad, value: user.user!.token);
+        log(user.user!.token);
+        log("value :  ${value.toString()}");
         return right(user);
       } else {
         return left(ServerFailuer(

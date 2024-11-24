@@ -29,6 +29,7 @@ class CustomItemCart extends StatelessWidget {
           CustomCounterCart(
             productId: cartModel.id,
             quantity: cartModel.quantity,
+            total: cartModel.totalPrice,
           )
         ],
       ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:market/src/core/style/image/image_app.dart';
+import 'package:market/src/feature/auth/domain/model/register_modeal.dart';
 
 class CustomDetailsProfile extends StatelessWidget {
-  const CustomDetailsProfile({super.key, this.groupValue, this.onChanged});
-  
+  const CustomDetailsProfile({super.key, required this.authModeal, this.groupValue, this.onChanged});
   final String? groupValue;
-  final ValueChanged<String?>? onChanged;
-
+  final void Function(String?)? onChanged;
+  final AuthModeal authModeal;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,13 +17,13 @@ class CustomDetailsProfile extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          const CircleAvatar(
+          CircleAvatar(
             radius: 50,
-            backgroundImage: AssetImage(ImageApp.logo), // تأكد من أن المرجع صحيح
+            backgroundImage: AssetImage(authModeal.user!.profileImage),
           ),
           const SizedBox(height: 10),
-          const Text(
-            'Jehad Adili',
+          Text(
+            authModeal.user!.name,
             style: TextStyle(
               color: Colors.black,
               fontSize: 22,
@@ -32,7 +32,7 @@ class CustomDetailsProfile extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Text(
-            'JacobMichael@gmail.com',
+            authModeal.user!.email,
             style: TextStyle(
               color: Colors.grey[800],
               fontSize: 14,
@@ -40,14 +40,14 @@ class CustomDetailsProfile extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Text(
-            'ID: 1789-12345688',
+            authModeal.user!.nationalId,
             style: TextStyle(
               color: Colors.grey[800],
               fontSize: 14,
             ),
           ),
           Text(
-            '010 454684354',
+            authModeal.user!.phone,
             style: TextStyle(
               color: Colors.grey[800],
               fontSize: 14,

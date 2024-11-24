@@ -5,6 +5,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:market/src/core/helper/cashe_helper.dart';
+import 'package:market/src/core/value/value.dart';
 import 'package:market/src/feature/auth/domain/use_case/use_case_login.dart';
 import 'package:market/src/feature/auth/presntation/cubit/state.dart';
 
@@ -40,8 +42,10 @@ class AuthCubit extends Cubit<AuthState> {
         password: password,
         token: token,
       );
+     
       respone.fold((success) {
         log(success.toString());
+        // CasheHelper.saveData(key: keyjehad, value: success.);
         emit(RegisterSuccess(message: success.toString()));
       }, (error) {
         log(error.message.toString());

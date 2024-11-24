@@ -4,9 +4,11 @@ import 'package:market/my_app.dart';
 import 'package:market/src/core/block/block_observer.dart';
 import 'package:market/src/core/di/service_locator.dart';
 import 'package:market/src/core/helper/cashe_helper.dart';
+import 'package:market/src/feature/auth/data/auth_remot_data_source/remot_data_imp.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   Bloc.observer = MyBlocObserver();
   await CasheHelper.init();
   initServiseLocator();
@@ -17,5 +19,4 @@ void main() async {
     const AppShop(),
     //  )
   );
-  
 }
