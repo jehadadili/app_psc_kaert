@@ -6,12 +6,10 @@ import 'package:market/src/feature/profile/presntation/view/screen/profile_scree
 
 listener(BuildContext context, AuthState state) {
   if (state is RegisterSuccess) {
-    // في حالة النجاح يتم الانتقال إلى الصفحة الرئيسية
     context.pushReplacement(
       pushReplacement: const ProfileScreen(),
     );
   } else if (state is RegisterError) {
-    // عرض رسالة خطأ عند حدوث مشكلة أثناء التسجيل
     final registerModel = state.registerModeal;
 
     if (registerModel.status == "error") {

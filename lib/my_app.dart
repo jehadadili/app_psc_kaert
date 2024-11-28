@@ -50,3 +50,15 @@ class AppShop extends StatelessWidget {
     );
   }
 }
+class Bank {
+  int _acountnumber;
+
+  Bank(this._acountnumber);
+
+  get getacounnt => _acountnumber; // بترجع القيمة البرايفت
+  set setacounnt(newaccount) {
+    if (newaccount) {
+      _acountnumber = newaccount;
+    } // بعدل على القيمة الي رح تدخل
+  }
+}

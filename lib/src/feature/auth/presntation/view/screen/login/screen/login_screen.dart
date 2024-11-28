@@ -58,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Form(
                         key: formKey,
                         child: AuthContainer(
-                          height: 400.h,
+                          height: 450.h,
                           child: Column(
                             children: [
                               SizedBox(

@@ -1,14 +1,13 @@
 class UserModel {
-  final String name;
-  final String email;
-  final String phone;
-  final String nationalId;
-  final String gender;
-  final String password;
-  final String profileImage;
-  final String token;
-  UserModel(
-    {
+  final name;
+  final email;
+  final phone;
+  final nationalId;
+  final gender;
+  final password;
+  final profileImage;
+  final token;
+  UserModel({
     required this.name,
     required this.email,
     required this.phone,
@@ -16,23 +15,21 @@ class UserModel {
     required this.gender,
     required this.profileImage,
     required this.password,
-    required  this.token,
+    required this.token,
   });
 
   factory UserModel.fromeJson(Map<String, dynamic> json) {
     return UserModel(
-        name: json["name"],
-        email: json["email"],
-        phone: json["phone"],
-        nationalId: json["nationalId"],
-        gender: json["gender"],
-        profileImage: json["profileImage"],
-        password: json["password"],
-        token: json["token"],
-        );
+      name: json["name"],
+      email: json["email"],
+      phone: json["phone"],
+      nationalId: json["nationalId"],
+      gender: json["gender"],
+      profileImage: json["profileImage"],
+      password: json["password"],
+      token: json["token"],
+    );
   }
-
-  static fromejson(data) {}
 
   // Map<String, dynamic> tojson = {
   //   "name" = name ,
