@@ -6,7 +6,7 @@ import 'package:market/src/feature/cart/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/favorite/presntion/cubit/cubit.dart';
 import 'package:market/src/feature/auth/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/search/cubit/cubit.dart';
-import 'package:market/src/feature/spalsh_screen/screen/splash_screen.dart';
+import 'package:market/src/feature/user_profile/presntation/view/screen/user_profile_screen.dart';
 
 class AppShop extends StatelessWidget {
   const AppShop({super.key});
@@ -46,19 +46,7 @@ class AppShop extends StatelessWidget {
           ),
         );
       },
-      child: const SplashScreen(),
+      child: const UserProfileScreen(),
     );
-  }
-}
-class Bank {
-  int _acountnumber;
-
-  Bank(this._acountnumber);
-
-  get getacounnt => _acountnumber; // بترجع القيمة البرايفت
-  set setacounnt(newaccount) {
-    if (newaccount) {
-      _acountnumber = newaccount;
-    } // بعدل على القيمة الي رح تدخل
   }
 }

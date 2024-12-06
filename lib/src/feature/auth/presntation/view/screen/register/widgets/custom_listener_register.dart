@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:market/src/core/extation/extation_navgter.dart';
+import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/core/widget/custom_show_snack_bar.dart';
 import 'package:market/src/feature/auth/presntation/cubit/state.dart';
-import 'package:market/src/feature/profile/presntation/view/screen/profile_screen.dart';
+import 'package:market/src/feature/home/presntation/view/screen/home_screen.dart';
 
 listener(BuildContext context, AuthState state) {
   if (state is RegisterSuccess) {
-    context.pushReplacement(
-      pushReplacement: const ProfileScreen(),
-    );
-  } else if (state is RegisterError) {
-    final registerModel = state.registerModeal;
-
-    if (registerModel.status == "error") {
+    if (state.authModeal.status == "success") {
       showSnackBar(
-        context: context,
-        message:
-            registerModel.message ?? "حدث خطأ أثناء التسجيل. حاول مرة أخرى.",
-        color: Colors.red,
-        text: state.registerModeal.message ?? "error status",
-      );
+          context: context,
+          text: state.authModeal.message ?? "",
+          color: ColorApp.green,
+          message: state.authModeal.message ?? "");
+      context.pushReplacement(pushReplacement: const HomeScreen());
+    }
+    if (state.authModeal.status == "error") {
+      showSnackBar(
+          context: context,
+          text: state.authModeal.message ?? "",
+          color: ColorApp.red,
+          message: state.authModeal.message ?? "");
+    } else if (state is RegisterError) {
+      showSnackBar(
+          context: context,
+          text: state.authModeal.message ?? "",
+          color: ColorApp.red,
+          message: state.authModeal.message ?? "");
     }
   }
 }

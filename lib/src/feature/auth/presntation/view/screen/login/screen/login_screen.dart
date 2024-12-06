@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:market/src/core/extation/extation_navgter.dart';
-import 'package:market/src/core/style/color/color_app.dart';
-import 'package:market/src/core/style/string/string_app.dart';
+import 'package:market/src/core/widget/container_widgets.dart';
 import 'package:market/src/core/widget/custom_animation_text.dart';
-import 'package:market/src/feature/auth/presntation/view/screen/login/widget/custom_listener.dart';
-import 'package:market/src/feature/auth/presntation/view/screen/login/widget/custom_login_text_field.dart';
+import 'package:market/src/core/widget/custom_widget_loading.dart';
 import 'package:market/src/feature/auth/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/auth/presntation/cubit/state.dart';
-import 'package:market/src/feature/auth/presntation/view/screen/register/screen/register_screen.dart';
-
-import '../../../../../../../core/widget/auth_action_row.dart';
-import '../../../../../../../core/widget/container_widgets.dart';
-import '../../../../../../../core/widget/custom_buttom_widget.dart';
-import '../../../../../../../core/widget/custom_widget_loading.dart';
+import 'package:market/src/feature/auth/presntation/view/screen/login/widget/custom_buttom_sign_in.dart';
+import 'package:market/src/feature/auth/presntation/view/screen/login/widget/custom_listener.dart';
+import 'package:market/src/feature/auth/presntation/view/screen/login/widget/custom_login_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -80,12 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   color: Colors.blue,
                                   size: 50.sp,
                                 ),
-                              CustomButtomWidget(
-                                horizontal: 50.w,
-                                vertical: 10.h,
-                                text: "Login",
-                                icon: Icons.login,
-                                color: ColorApp.red,
+                              CustomButtomSignIn(
                                 onPressed: () {
                                   if (formKey.currentState!.validate()) {
                                     cubit.logincubit(
@@ -94,18 +83,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     );
                                     FocusScope.of(context).unfocus();
                                   }
-                                },
-                              ),
-                              SizedBox(
-                                height: 20.h,
-                              ),
-                              AuthActionRow(
-                                text: StringApp.loginRow,
-                                textnav: StringApp.register,
-                                onPressed: () {
-                                  context.pushReplacement(
-                                    pushReplacement: const RegisterScreen(),
-                                  );
                                 },
                               ),
                             ],

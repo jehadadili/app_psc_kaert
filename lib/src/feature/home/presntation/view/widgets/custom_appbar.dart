@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/extation/extation_navgter.dart';
 import 'package:market/src/core/style/color/color_app.dart';
+import 'package:market/src/core/style/image/image_app.dart';
+import 'package:market/src/core/widget/custom_animation_text.dart';
 import 'package:market/src/feature/cart/presntation/view/screen/cart_screen.dart';
+
 import 'package:market/src/feature/home/domain/model/home_model.dart';
 import 'package:market/src/feature/search/view/screen/search_screen.dart';
-
-import '../../../../../core/style/image/image_app.dart';
 
 class CustomContainerAppbar extends StatelessWidget {
   const CustomContainerAppbar({super.key, required this.homemodel});
@@ -22,11 +23,11 @@ class CustomContainerAppbar extends StatelessWidget {
           padding: EdgeInsets.all(10.r),
           child: Row(
             children: [
-              // CustomAnimationText(
-              //   text: "PCDKART",
-              //   fontSize: 25.sp,
-              //   color: ColorApp.blue,
-              // ),
+              CustomAnimationText(
+                text: "PCDKART",
+                fontSize: 25.sp,
+                color: ColorApp.blue,
+              ),
               const Spacer(),
               TextButton(
                 onPressed: () {

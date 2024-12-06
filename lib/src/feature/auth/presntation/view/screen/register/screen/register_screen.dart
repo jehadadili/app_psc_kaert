@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:market/src/core/extation/extation_navgter.dart';
 import 'package:market/src/core/helper/cashe_helper.dart';
-import 'package:market/src/core/style/color/color_app.dart';
-import 'package:market/src/core/style/string/string_app.dart';
+
 import 'package:market/src/core/value/value.dart';
-import 'package:market/src/core/widget/auth_action_row.dart';
-import 'package:market/src/core/widget/custom_buttom_widget.dart';
+
 import 'package:market/src/core/widget/custom_widget_loading.dart';
-import 'package:market/src/feature/auth/presntation/view/screen/login/screen/login_screen.dart';
 import 'package:market/src/feature/auth/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/auth/presntation/cubit/state.dart';
+import 'package:market/src/feature/auth/presntation/view/screen/register/widgets/custom_buttom_register.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/register/widgets/profile_image_picker.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/register/widgets/custom_colum_text_field.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/register/widgets/custom_container_top.dart';
@@ -94,12 +91,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       color: Colors.blue,
                                       size: 50.sp,
                                     ),
-                                  CustomButtomWidget(
-                                    vertical: 10.h,
-                                    horizontal: 50.w,
-                                    color: ColorApp.red,
-                                    text: "Sign In",
-                                    icon: Icons.login,
+                                  CustomButtomRegister(
                                     onPressed: () {
                                       if (formKey.currentState!.validate()) {
                                         cubit.addUserRegister(
@@ -120,16 +112,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           key: keytoken,
                                           value: tokenController.text);
                                     },
-                                  ),
-                                  AuthActionRow(
-                                    text: StringApp.registerRow,
-                                    textnav: StringApp.lOGIN,
-                                    onPressed: () {
-                                      context.pushReplacement(
-                                        pushReplacement: const LoginScreen(),
-                                      );
-                                    },
-                                  ),
+                                  )
                                 ],
                               ),
                             ),
@@ -140,7 +123,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ],
               ),
-               ProfileImagePicker(
+              ProfileImagePicker(
                 image: cubit.image,
                 onPickImage: () {
                   cubit.addImage();

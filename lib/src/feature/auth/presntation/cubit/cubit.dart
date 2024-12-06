@@ -40,13 +40,13 @@ class AuthCubit extends Cubit<AuthState> {
         password: password,
         token: token,
       );
-     
-      respone.fold((success) {
+
+      respone.fold((error) {
+        log(error.errormasseig.toString());
+        emit(RegisterError(mass: error.errormasseig ?? ""));
+      }, (success) {
         log(success.toString());
-        emit(RegisterSuccess(message: success.toString()));
-      }, (error) {
-        log(error.message.toString());
-        emit(RegisterError(registerModeal: error));
+        emit(RegisterSuccess(authModeal: success));
       });
     }
   }
@@ -82,12 +82,13 @@ class AuthCubit extends Cubit<AuthState> {
       email: email,
       password: password,
     );
-    data.fold((success) {
+    data.fold((error) {
+      log(error.errormasseig.toString());
+      emit(LoginError(message: error.errormasseig ?? ""));
+    }, (success) {
       log(success.toString());
-      emit(LoginSuccess(message: success.toString()));
-    }, (error) {
-      log(error.message.toString());
-      emit(LoginError(registerModeal: error));
+
+      emit(LoginSuccess(authModeal: success));
     });
   }
 }

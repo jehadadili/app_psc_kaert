@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:market/src/core/style/string/string_app.dart';
 import 'package:market/src/core/validator/validater.dart';
 import 'package:market/src/core/widget/custom_text_field_widgets.dart';
+import 'package:market/src/feature/auth/presntation/view/screen/register/widgets/secure_text_field.dart';
 
 class CustomColumTextField extends StatelessWidget {
   const CustomColumTextField(
@@ -73,16 +74,11 @@ class CustomColumTextField extends StatelessWidget {
             return MyValidator.gendrValidator(gendr);
           },
         ),
-        CustomTextFieldWidgets(
-          hintText: StringApp.labelPassword,
-          labelText: StringApp.hintPassword,
-          prefixIcon: const Icon(Icons.lock),
-          controller: passwordController,
-          keyboardType: TextInputType.text,
-          validator: (password) {
-            return MyValidator.passwrdValidator(password);
-          },
-        ),
+       SecureTextField(
+        passwordController: passwordController,
+        
+       ),
+
         CustomTextFieldWidgets(
           hintText: StringApp.labelToken,
           labelText: StringApp.hintToken,

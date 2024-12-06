@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:market/src/core/api/endpont.dart';
 import 'package:market/src/core/value/value.dart';
 import 'package:market/src/feature/auth/domain/model/register_modeal.dart';
-import 'package:market/src/feature/profile/data/reomt_data/remot_data.dart';
+import 'package:market/src/feature/user_profile/data/reomt_data/remot_data.dart';
 
 class ReomtDataprofileImp implements RemotDataprofile {
   final Dio dio = Dio();
@@ -20,8 +20,8 @@ class ReomtDataprofileImp implements RemotDataprofile {
       if (profile.statusCode == 200) {
         log(profile.statusCode.toString());
         var respone = profile.data;
-        log(profile.data);
-        var user = AuthModeal.fromejson(respone);
+        log(profile.data.toString());
+        var user = AuthModeal.fromJson(respone);
         return user;
       } else {
         return Future.error(profile.statusMessage.toString());

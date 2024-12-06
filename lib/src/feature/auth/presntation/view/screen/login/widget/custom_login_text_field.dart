@@ -3,6 +3,7 @@ import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/core/style/string/string_app.dart';
 import 'package:market/src/core/validator/validater.dart';
 import 'package:market/src/core/widget/custom_text_field_widgets.dart';
+import 'package:market/src/feature/auth/presntation/view/screen/login/widget/password_text_field.dart';
 
 class CustomLoginTextField extends StatelessWidget {
   const CustomLoginTextField(
@@ -28,17 +29,9 @@ class CustomLoginTextField extends StatelessWidget {
           filled: true,
           keyboardType: TextInputType.emailAddress,
         ),
-        CustomTextFieldWidgets(
-          hintText: StringApp.hintPassword,
-          labelText: StringApp.labelPassword,
-          prefixIcon: const Icon(Icons.lock),
-          controller: passwordController,
-          validator: (password) {
-            return MyValidator.passwrdValidator(password);
-          },
-          fillColor: ColorApp.white,
-          filled: true,
-        ),
+        PassWordTextField(
+          passwordController: passwordController,
+        )
       ],
     );
   }

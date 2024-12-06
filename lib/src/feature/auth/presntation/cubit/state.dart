@@ -7,26 +7,26 @@ class RegisterInitial extends AuthState {}
 class RegisterLoading extends AuthState {}
 
 class RegisterSuccess extends AuthState {
-  final String message;
-  RegisterSuccess({required this.message});
+  final AuthModeal authModeal;
+  RegisterSuccess({required this.authModeal});
 }
 
 class RegisterError extends AuthState {
-  final AuthModeal registerModeal;
+  final String mass;
 
-  RegisterError({required this.registerModeal});
+  RegisterError({required this.mass});
 }
 
 class LoginSuccess extends AuthState {
-  final String message;
+  final AuthModeal authModeal;
 
-  LoginSuccess({required this.message});
+  LoginSuccess({required this.authModeal});
 }
 
 class LoginError extends AuthState {
-  final AuthModeal registerModeal;
+  final String message;
 
-  LoginError({required this.registerModeal});
+  LoginError({required this.message});
 }
 
 class ChoesImage extends AuthState {}

@@ -1,8 +1,7 @@
 import 'package:market/src/core/network/network_info_impl.dart';
 import 'package:market/src/feature/auth/domain/model/register_modeal.dart';
-import 'package:market/src/feature/profile/data/reomt_data/remot_data.dart';
-import 'package:market/src/feature/profile/data/reomt_data/reomt_data_imp.dart';
-import 'package:market/src/feature/profile/domain/rep/rep.dart';
+import 'package:market/src/feature/user_profile/data/reomt_data/reomt_data_imp.dart';
+import 'package:market/src/feature/user_profile/domain/rep/rep.dart';
 
 class RepoProfileImp implements RepoProfile {
   final NetworkInfoImpl networkInfoImpl;

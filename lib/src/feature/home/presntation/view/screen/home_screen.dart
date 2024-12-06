@@ -39,10 +39,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        floatingActionButton: Padding(
-          padding: EdgeInsets.only(top: 30.h, left: 30.w),
-          child: const SFlow(),
-        ),
       ),
     );
   }

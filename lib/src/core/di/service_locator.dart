@@ -17,10 +17,10 @@ import 'package:market/src/feature/auth/data/repository_impl/repository_impl.dar
 import 'package:market/src/feature/auth/domain/use_case/use_case_login.dart';
 import 'package:market/src/feature/auth/domain/use_case/use_case_register.dart';
 import 'package:market/src/feature/auth/presntation/cubit/cubit.dart';
-import 'package:market/src/feature/profile/data/reomt_data/reomt_data_imp.dart';
-import 'package:market/src/feature/profile/data/repo_imp/repo_imp.dart';
-import 'package:market/src/feature/profile/domain/use_cass/use_cass.dart';
-import 'package:market/src/feature/profile/presntation/cubit/cubit.dart';
+import 'package:market/src/feature/user_profile/data/reomt_data/reomt_data_imp.dart';
+import 'package:market/src/feature/user_profile/data/repo_imp/repo_imp.dart';
+import 'package:market/src/feature/user_profile/domain/use_cass/use_cass.dart';
+import 'package:market/src/feature/user_profile/presntation/cubit/cubit.dart';
 
 final GetIt sl = GetIt.instance;
 
