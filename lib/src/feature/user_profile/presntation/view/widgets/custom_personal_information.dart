@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/feature/auth/domain/model/register_modeal.dart';
 import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_detils_profilei.dart';
+import 'package:intl/intl.dart'; // مكتبة لعرض التاريخ
 
 class CustomPersonalInformation extends StatelessWidget {
   const CustomPersonalInformation({super.key, required this.authModeal});
   final AuthModeal authModeal;
+
   @override
   Widget build(BuildContext context) {
+    final String currentDate =
+        DateFormat('EEEE, dd MMM, yyyy').format(DateTime.now());
+
     return Column(
       children: [
         Center(
@@ -23,7 +28,7 @@ class CustomPersonalInformation extends StatelessWidget {
         SizedBox(height: 15.h),
         // اسم المستخدم
         Text(
-          authModeal.user?.name,
+          authModeal.user?.name ?? "User Name",
           style: TextStyle(
             color: Colors.white,
             fontSize: 22.sp,
@@ -31,8 +36,9 @@ class CustomPersonalInformation extends StatelessWidget {
           ),
         ),
         SizedBox(height: 5.h),
+        // التاريخ الحالي
         Text(
-          "Active since - Jul, 2019",
+          currentDate,
           style: TextStyle(
             color: Colors.grey,
             fontSize: 14.sp,
@@ -43,16 +49,30 @@ class CustomPersonalInformation extends StatelessWidget {
         _buildSectionTitle("Personal Information", Icons.edit),
         SizedBox(height: 10.h),
         CustomDetilsProfilei(
-            icon: Icons.person, title: "name", value: authModeal.user?.name),
+          icon: Icons.person,
+          title: "Name",
+          value: authModeal.user?.name ?? "Unknown",
+        ),
         CustomDetilsProfilei(
-            icon: Icons.email, title: "Email", value: authModeal.user?.email),
+          icon: Icons.email,
+          title: "Email",
+          value: authModeal.user?.email ?? "",
+        ),
         CustomDetilsProfilei(
-            icon: Icons.phone, title: "Phone", value: authModeal.user?.phone),
+          icon: Icons.phone,
+          title: "Phone",
+          value: authModeal.user?.phone ?? "",
+        ),
         CustomDetilsProfilei(
-            icon: Icons.insert_drive_file,
-            title: "nationalId",
-            value: authModeal.user?.nationalId),
-
+          icon: Icons.insert_drive_file,
+          title: "National ID",
+          value: authModeal.user?.nationalId ?? "",
+        ),
+        CustomDetilsProfilei(
+          icon: Icons.insert_drive_file,
+          title: "Gender",
+          value: authModeal.user?.gender ?? "",
+        ),
         SizedBox(height: 30.h),
       ],
     );

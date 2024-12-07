@@ -20,6 +20,7 @@ import 'package:market/src/feature/auth/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/user_profile/data/reomt_data/reomt_data_imp.dart';
 import 'package:market/src/feature/user_profile/data/repo_imp/repo_imp.dart';
 import 'package:market/src/feature/user_profile/domain/use_cass/use_cass.dart';
+import 'package:market/src/feature/user_profile/domain/use_cass/use_cass_ubdate_profile.dart';
 import 'package:market/src/feature/user_profile/presntation/cubit/cubit.dart';
 
 final GetIt sl = GetIt.instance;
@@ -107,10 +108,15 @@ Future<void> initServiseLocator() async {
     () => RemotDataImplCart(),
   );
   sl.registerLazySingleton(
-    () => ProfileCubit(useCassprofile: sl.get<UseCassprofile>()),
+    () => ProfileCubit(
+        useCassprofile: sl.get<UseCassprofile>(),
+        useCassUbdateProfile: sl.get<UseCassUbdateProfile>()),
   );
   sl.registerLazySingleton(
     () => UseCassprofile(repoProfile: sl.get<RepoProfileImp>()),
+  );
+  sl.registerLazySingleton(
+    () => UseCassUbdateProfile(repoProfile: sl.get<RepoProfileImp>()),
   );
   sl.registerLazySingleton(
     () => ReomtDataprofileImp(),

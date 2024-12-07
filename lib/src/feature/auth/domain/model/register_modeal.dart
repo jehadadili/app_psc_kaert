@@ -39,4 +39,6 @@ class AuthModeal{
             : null
     );
   }
+
+  void then(Null Function(dynamic value) param0) {}
 }

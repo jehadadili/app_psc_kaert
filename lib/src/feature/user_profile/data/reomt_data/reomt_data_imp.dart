@@ -30,4 +30,34 @@ class ReomtDataprofileImp implements RemotDataprofile {
       return Future.error(e.toString());
     }
   }
+
+  @override
+  Future<AuthModeal> ubdateProfile({
+    required String name,
+    required int email,
+    required String phone,
+    required int password,
+  }) async {
+    try {
+      var ubdate = await dio.put(Endpont.ubdateprofile, data: {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "password": password,
+        "token": getjehad,
+      });
+
+      if (ubdate.statusCode == 200) {
+        log(ubdate.statusCode.toString());
+        var data = ubdate.data;
+        log(ubdate.data.toString());
+        var user = AuthModeal.fromJson(data);
+        return user;
+      } else {
+        return Future.error(ubdate.statusMessage.toString());
+      }
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
 }

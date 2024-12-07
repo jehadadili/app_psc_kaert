@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomDetilsProfilei extends StatelessWidget {
-  const CustomDetilsProfilei({super.key, required this.icon, required this.title, required this.value});
+  const CustomDetilsProfilei(
+      {super.key,
+      required this.icon,
+      required this.title,
+      required this.value});
   final IconData icon;
   final String title;
   final String value;
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(

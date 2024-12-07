@@ -6,7 +6,10 @@ import 'package:market/src/feature/user_profile/domain/rep/rep.dart';
 class RepoProfileImp implements RepoProfile {
   final NetworkInfoImpl networkInfoImpl;
   final ReomtDataprofileImp reomtDataprofileImp;
-  RepoProfileImp( {required this.networkInfoImpl , required this.reomtDataprofileImp,});
+  RepoProfileImp({
+    required this.networkInfoImpl,
+    required this.reomtDataprofileImp,
+  });
   @override
   Future<AuthModeal> profile() async {
     try {
@@ -18,6 +21,25 @@ class RepoProfileImp implements RepoProfile {
       }
     } catch (error) {
       return Future.error(error.toString());
+    }
+  }
+
+  @override
+  Future<AuthModeal> ubdateProfile(
+      {required String name,
+      required int email,
+      required String phone,
+      required int password}) async {
+    try {
+      if (await networkInfoImpl.isconected) {
+        var ubdate = await reomtDataprofileImp.ubdateProfile(
+            name: name, email: email, phone: phone, password: password);
+        return ubdate;
+      } else {
+        return Future.error("خطأ في تحميل الداتا ");
+      }
+    } catch (e) {
+      return Future.error(e.toString());
     }
   }
 }

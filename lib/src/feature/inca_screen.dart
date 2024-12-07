@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 void main() {
-  BankAcount data = BankAcount("jehad");
+  BankAcount data = BankAcount();
   data.setwithdrawal = 200;
   data.getbalance;
   log(data.getbalance);
@@ -9,8 +9,8 @@ void main() {
 
 class BankAcount {
   double _balance = 50;
-  String _accountnumber;
-  BankAcount(this._accountnumber);
+  // String _accountnumber;
+  //BankAcount(this._accountnumber);
 
   get getbalance => _balance;
 
@@ -18,7 +18,7 @@ class BankAcount {
     if (newnumber > 0) {
       _balance += newnumber;
     } else {
-      print("الرصيد نفسه اكبر من صفر");
+     // print("الرصيد نفسه اكبر من صفر");
     }
   }
 
@@ -26,7 +26,7 @@ class BankAcount {
     if (newnumber > 0 && newnumber <= _balance) {
       _balance -= newnumber;
     } else {
-      print("الرصيد غير كافي");
+    //  print("الرصيد غير كافي");
     }
   }
 }
