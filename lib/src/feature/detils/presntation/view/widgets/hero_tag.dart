@@ -4,7 +4,7 @@ class HeroTag {
   static String image(String urlImage) => urlImage;
 
   static String addressLine1(HomeModel homemodel) =>
-      homemodel.name + homemodel.description;
+      homemodel.name + homemodel.description ;
 
   static String addressLine2(HomeModel homemodel) =>
       homemodel.name + homemodel.company;

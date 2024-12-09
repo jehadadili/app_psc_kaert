@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/di/service_locator.dart';
+import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/feature/user_profile/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/user_profile/presntation/cubit/state.dart';
 import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_personal_information.dart';
@@ -15,7 +16,12 @@ class UserProfileScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => sl.get<ProfileCubit>()..profiledata(),
       child: Scaffold(
-        backgroundColor: const Color(0xFF0D0D2B),
+        backgroundColor: ColorApp.bluedark,
+        appBar: AppBar(
+          backgroundColor: ColorApp.bluedark,
+          elevation: 0,
+          iconTheme: const IconThemeData(color: ColorApp.white),
+        ),
         body: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             if (state is ProfileFilyer) {
@@ -28,7 +34,7 @@ class UserProfileScreen extends StatelessWidget {
             }
             if (state is ProfileSuccess) {
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,

@@ -34,9 +34,9 @@ class ReomtDataprofileImp implements RemotDataprofile {
   @override
   Future<AuthModeal> ubdateProfile({
     required String name,
-    required int email,
+    required String email,
     required String phone,
-    required int password,
+    required String password,
   }) async {
     try {
       var ubdate = await dio.put(Endpont.ubdateprofile, data: {

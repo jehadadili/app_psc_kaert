@@ -4,8 +4,8 @@ abstract class RemotDataprofile {
   Future<AuthModeal> getprofile();
   Future<AuthModeal> ubdateProfile({
     required String name,
-    required int email,
+    required String email,
     required String phone,
-    required int password,
+    required String password,
   });
 }

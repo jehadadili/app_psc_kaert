@@ -50,7 +50,7 @@ class FavoriteScreen extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return Dismissible(
-                      key: Key(favorite[index].id.toString()), 
+                      key: Key(favorite[index].id.toString()),
                       direction: DismissDirection.endToStart,
                       onDismissed: (direction) {
                         BlocProvider.of<FavoriteCubit>(context)

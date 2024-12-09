@@ -23,9 +23,9 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   ubdateProfile({
     required String name,
-    required int email,
+    required String email,
     required String phone,
-    required int password,
+    required String password,
   }) async {
     emit(UPdateProfileLoading());
     try {

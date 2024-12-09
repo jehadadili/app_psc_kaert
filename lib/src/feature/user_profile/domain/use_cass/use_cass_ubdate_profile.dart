@@ -8,9 +8,9 @@ class UseCassUbdateProfile {
 
   Future<AuthModeal> useUbdateProfile({
     required String name,
-    required int email,
+    required String email,
     required String phone,
-    required int password,
+    required String password,
   }) async {
     return await repoProfile.ubdateProfile(
         name: name, email: email, phone: phone, password: password);

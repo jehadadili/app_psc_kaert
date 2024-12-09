@@ -25,11 +25,12 @@ class RepoProfileImp implements RepoProfile {
   }
 
   @override
-  Future<AuthModeal> ubdateProfile(
-      {required String name,
-      required int email,
-      required String phone,
-      required int password}) async {
+  Future<AuthModeal> ubdateProfile({
+    required String name,
+    required String email,
+    required String phone,
+    required String password,
+  }) async {
     try {
       if (await networkInfoImpl.isconected) {
         var ubdate = await reomtDataprofileImp.ubdateProfile(
