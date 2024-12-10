@@ -30,24 +30,22 @@ class _PassWordTextFieldState extends State<PassWordTextField> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 17.w),
-          child: CustomTextFieldWidgets(
-            obscureText: !isVisible,
-            labelText: StringApp.labelPassword,
-            prefixIcon: const Icon(Icons.lock),
-            controller: widget.passwordController,
-            hintText: StringApp.hintPassword,
-            fillColor: ColorApp.white,
-            filled: true,
-            keyboardType: TextInputType.visiblePassword,
-            validator: (password) {
-  return MyValidator.passwrdValidator(password);            },
-          ),
+        CustomTextFieldWidgets(
+          obscureText: !isVisible,
+          labelText: StringApp.labelPassword,
+          prefixIcon: const Icon(Icons.lock),
+          controller: widget.passwordController,
+          hintText: StringApp.hintPassword,
+          fillColor: ColorApp.white,
+          filled: true,
+          keyboardType: TextInputType.visiblePassword,
+          validator: (password) {
+            return MyValidator.passwrdValidator(password);
+          },
         ),
         SizedBox(height: 6.h),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5.w),
+          padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: FittedBox(
             child: Row(
               children: [

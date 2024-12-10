@@ -45,10 +45,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 150.h,
+                      height: 120.h,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
                       child: Form(
                         key: formKey,
                         child: AuthContainer(

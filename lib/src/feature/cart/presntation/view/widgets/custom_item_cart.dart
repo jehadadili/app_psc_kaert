@@ -13,16 +13,19 @@ class CustomItemCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8.w),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            cartModel.name ?? "",
-            style: TextStyle(
-              color: ColorApp.blue,
-              fontWeight: FontWeight.bold,
-              fontSize: 15.sp,
+          FittedBox(
+            child: Text(
+              cartModel.name ?? "",
+              style: TextStyle(
+                color: ColorApp.blue,
+                fontWeight: FontWeight.bold,
+                fontSize: 15.sp,
+              ),
             ),
           ),
           SizedBox(height: 20.h),

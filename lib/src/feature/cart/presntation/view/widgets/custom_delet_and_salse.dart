@@ -8,14 +8,15 @@ import 'package:market/src/feature/cart/presntation/cubit/cubit.dart';
 class CustomDeletAndSalse extends StatelessWidget {
   const CustomDeletAndSalse({super.key, required this.cartModel});
   final CartModel cartModel;
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(left: 20.w),
-          child: IconButton(
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8.w),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
             onPressed: () {
               BlocProvider.of<CartCubit>(context)
                   .deletcart(productId: cartModel.id);
@@ -23,19 +24,19 @@ class CustomDeletAndSalse extends StatelessWidget {
             icon: const Icon(Icons.delete),
             color: ColorApp.red,
           ),
-        ),
-        SizedBox(
-          height: 50.h,
-        ),
-        Text(
-          "\$ ${cartModel.price ?? ""}",
-          style: TextStyle(
-            color: ColorApp.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 15.sp,
+          SizedBox(height: 20.h),
+          FittedBox(
+            child: Text(
+              "\$ ${cartModel.price ?? ""}",
+              style: TextStyle(
+                color: ColorApp.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 15.sp,
+              ),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

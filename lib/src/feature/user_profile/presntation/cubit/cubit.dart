@@ -9,7 +9,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit( {required this.useCassprofile ,required this.useCassUbdateProfile,})
       : super(ProfileInitial());
 
-  profiledata() async {
+  profiledate() async {
     emit(ProfileLoading());
     try {
       var respone = useCassprofile.profileusecass();

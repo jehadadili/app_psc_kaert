@@ -9,14 +9,14 @@ class CustomDesignDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: [
-          SizedBox(height: 60.h),
-          const CustomUserDrawer(),
-          SizedBox(height: 150.h),
-          const Expanded(
-            child: CustomBodyDrawer(),
-          ),
-        ],
-      );
+      children: [
+        SizedBox(height: 50.h),
+        const CustomUserDrawer(),
+        SizedBox(height: 100.h),
+        const Expanded(
+          child: CustomBodyDrawer(),
+        ),
+      ],
+    );
   }
 }

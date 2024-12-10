@@ -37,7 +37,7 @@ class CustomTextFieldWidgets extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
       child: TextFormField(
-        obscureText: obscureText ?? true,
+        obscureText: obscureText ?? false,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         style: const TextStyle(color: ColorApp.black),
         controller: controller,

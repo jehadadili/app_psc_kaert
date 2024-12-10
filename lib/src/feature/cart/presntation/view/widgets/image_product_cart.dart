@@ -11,8 +11,6 @@ class ImageProductCart extends StatelessWidget {
       width: 130.w,
       child: Image.network(
         cartModel.image ?? "",
-        width: 230.w,
-        height: 200.h,
       ),
     );
   }

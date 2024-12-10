@@ -13,23 +13,21 @@ class BodywidgetSuccess extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        padding: EdgeInsets.all(10.r),
-        scrollDirection: Axis.vertical,
-        itemCount: listlaptop.length,
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          return FadeInUp(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.h),
-              child: CustomSuccess(
-                homeModel: listlaptop[index],
-              ),
+    return ListView.builder(
+      padding: EdgeInsets.all(10.r),
+      scrollDirection: Axis.vertical,
+      itemCount: listlaptop.length,
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        return FadeInUp(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 5.h),
+            child: CustomSuccess(
+              homeModel: listlaptop[index],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

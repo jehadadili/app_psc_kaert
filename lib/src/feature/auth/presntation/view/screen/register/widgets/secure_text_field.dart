@@ -26,36 +26,33 @@ class _SecureTextFieldState extends State<SecureTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 17.w),
-      child: Column(
-        children: [
-          CustomTextFieldWidgets(
-            obscureText: !isVisible,
-            hintText: StringApp.labelPassword,
-            labelText: StringApp.hintPassword,
-            prefixIcon: const Icon(Icons.lock),
-            controller: widget.passwordController,
-            keyboardType: TextInputType.visiblePassword,
-            validator: (password) {
-              return MyValidator.passwrdValidator(password);
+    return Column(
+      children: [
+        CustomTextFieldWidgets(
+          obscureText: !isVisible,
+          hintText: StringApp.labelPassword,
+          labelText: StringApp.hintPassword,
+          prefixIcon: const Icon(Icons.lock),
+          controller: widget.passwordController,
+          keyboardType: TextInputType.visiblePassword,
+          validator: (password) {
+            return MyValidator.passwrdValidator(password);
+          },
+          suffixIcon: IconButton(
+            onPressed: () {
+              setState(() {
+                isVisible = !isVisible;
+              });
             },
-            suffixIcon: IconButton(
-              onPressed: () {
-                setState(() {
-                  isVisible = !isVisible;
-                });
-              },
-              icon: isVisible
-                  ? const Icon(Icons.visibility)
-                  : const Icon(Icons.visibility_off),
-            ),
+            icon: isVisible
+                ? const Icon(Icons.visibility)
+                : const Icon(Icons.visibility_off),
           ),
-          SizedBox(
-            height: 8.h,
-          ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: 8.h,
+        ),
+      ],
     );
   }
 }

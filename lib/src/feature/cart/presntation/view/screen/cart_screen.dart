@@ -12,13 +12,15 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorApp.white,
+      backgroundColor: ColorApp.bluedark,
       appBar: AppBar(
-        backgroundColor: ColorApp.white,
+        backgroundColor: ColorApp.bluedark,
+        iconTheme: const IconThemeData(color: ColorApp.white),
         elevation: 0,
         title: Text(
           "My Cart",
           style: TextStyle(
+            color: ColorApp.white,
             fontSize: 20.sp,
             fontWeight: FontWeight.bold,
           ),
