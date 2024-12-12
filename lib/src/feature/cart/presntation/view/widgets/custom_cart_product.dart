@@ -21,7 +21,7 @@ class CustomCartProduct extends StatelessWidget {
         elevation: 10,
         color: ColorApp.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.r),
+          borderRadius: BorderRadius.circular(20.r),
         ),
         child: SizedBox(
           height: 140.h,

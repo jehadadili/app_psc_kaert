@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:market/src/core/style/color/color_app.dart';
 
 class CustomDetilsProfilei extends StatelessWidget {
-  const CustomDetilsProfilei(
-      {super.key,
-      required this.icon,
-      required this.title,
-      required this.value});
+  const CustomDetilsProfilei({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.value,
+    this.onPressed,
+    this.iconedit,
+    required this.editprofile,
+    this.controller,
+  });
   final IconData icon;
+  final IconData? iconedit;
   final String title;
   final String value;
+  final void Function()? onPressed;
+  final bool editprofile;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +49,33 @@ class CustomDetilsProfilei extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 2.h),
-              Text(
-                value,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              editprofile
+                  ? Text(
+                      value,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  : SizedBox(
+                      height: 30,
+                      width: 150,
+                      child: TextField(
+                        controller: controller,
+                        style: TextStyle(color: ColorApp.white),
+                      ),
+                    )
             ],
+          ),
+          const Spacer(),
+          IconButton(
+            onPressed: onPressed,
+            icon: Icon(
+              iconedit,
+              color: Colors.blue,
+              size: 20.sp,
+            ),
           ),
         ],
       ),

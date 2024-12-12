@@ -3,9 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSectionTitle extends StatelessWidget {
   const CustomSectionTitle(
-      {super.key, required this.title, required this.icon});
+      {super.key, required this.title, this.onPressed, required this.savedata});
   final String title;
-  final IconData icon;
+  final void Function()? onPressed;
+  final bool savedata;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,11 +20,18 @@ class CustomSectionTitle extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        Icon(
-          icon,
-          color: Colors.blue,
-          size: 20.sp,
-        ),
+        savedata
+            ? const SizedBox()
+            : TextButton(
+                onPressed: onPressed,
+                child: Text(
+                  "Save",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ))
       ],
     );
   }

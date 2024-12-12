@@ -17,6 +17,7 @@ class ProfileFilyer extends ProfileState {
 
   ProfileFilyer({required this.mass});
 }
+
 class UPdateProfileLoading extends ProfileState {}
 
 class UPdateProfileSuccess extends ProfileState {
@@ -24,6 +25,8 @@ class UPdateProfileSuccess extends ProfileState {
 
   UPdateProfileSuccess({required this.authModeal});
 }
+
+class SuccessEdit extends ProfileState {}
 
 class UPdateProfileFilyer extends ProfileState {
   final String mass;

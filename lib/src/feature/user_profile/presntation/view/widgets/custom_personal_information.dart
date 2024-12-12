@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/feature/auth/domain/model/register_modeal.dart';
+import 'package:market/src/feature/user_profile/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_detils_profilei.dart';
-import 'package:intl/intl.dart'; // مكتبة لعرض التاريخ
+import 'package:intl/intl.dart';
+import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_section_title.dart'; // مكتبة لعرض التاريخ
 
-class CustomPersonalInformation extends StatelessWidget {
+class CustomPersonalInformation extends StatefulWidget {
   const CustomPersonalInformation({super.key, required this.authModeal});
   final AuthModeal authModeal;
 
   @override
+  State<CustomPersonalInformation> createState() =>
+      _CustomPersonalInformationState();
+}
+
+class _CustomPersonalInformationState extends State<CustomPersonalInformation> {
+  bool edit = true;
+  TextEditingController textusernameController = TextEditingController();
+  TextEditingController textemailController = TextEditingController();
+  TextEditingController textnumperController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
+    ProfileCubit ubdatecubit = BlocProvider.of<ProfileCubit>(context);
     final String currentDate =
         DateFormat('EEEE, dd MMM, yyyy').format(DateTime.now());
 
@@ -21,14 +36,15 @@ class CustomPersonalInformation extends StatelessWidget {
             backgroundColor: Colors.pinkAccent,
             child: CircleAvatar(
               radius: 48.r,
-              backgroundImage: NetworkImage(authModeal.user?.profileImage),
+              backgroundImage:
+                  NetworkImage(widget.authModeal.user?.profileImage),
             ),
           ),
         ),
         SizedBox(height: 15.h),
         // اسم المستخدم
         Text(
-          authModeal.user?.name ?? "User Name",
+          widget.authModeal.user?.name ?? "User Name",
           style: TextStyle(
             color: Colors.white,
             fontSize: 22.sp,
@@ -46,57 +62,61 @@ class CustomPersonalInformation extends StatelessWidget {
         ),
         SizedBox(height: 30.h),
         // المعلومات الشخصية
-        _buildSectionTitle("Personal Information", Icons.edit),
+        CustomSectionTitle(
+          savedata: edit,
+          title: "Personal Information",
+          onPressed: () {
+            ubdatecubit.ubdateProfile(
+                name: textnumperController.text,
+                email: textemailController.text,
+                phone: textnumperController.text,
+                password: "");
+          },
+        ),
         SizedBox(height: 10.h),
         CustomDetilsProfilei(
           icon: Icons.person,
           title: "Name",
-          value: authModeal.user?.name ?? "Unknown",
+          value: widget.authModeal.user?.name ?? "Unknown",
+          iconedit: Icons.edit,
+          onPressed: () {
+            setState(() {
+              edit = !edit;
+            });
+          },
+          editprofile: edit,
+          controller: textusernameController,
         ),
-        CustomDetilsProfilei(
-          icon: Icons.email,
-          title: "Email",
-          value: authModeal.user?.email ?? "",
-        ),
-        CustomDetilsProfilei(
-          icon: Icons.phone,
-          title: "Phone",
-          value: authModeal.user?.phone ?? "",
-        ),
-        CustomDetilsProfilei(
-          icon: Icons.insert_drive_file,
-          title: "National ID",
-          value: authModeal.user?.nationalId ?? "",
-        ),
-        CustomDetilsProfilei(
-          icon: Icons.insert_drive_file,
-          title: "Gender",
-          value: authModeal.user?.gender ?? "",
-        ),
+        // CustomDetilsProfilei(
+        //   icon: Icons.email,
+        //   iconedit: Icons.edit,
+        //   onPressed: () {
+        //     setState(() {
+        //       edit = !edit;
+        //     });
+        //   },
+        //   controller: textemailController,
+        //   editprofile: edit,
+        //   title: "Email",
+        //   value: widget.authModeal.user?.email ?? "",
+        // ),
+        // CustomDetilsProfilei(
+        //   icon: Icons.phone,
+        //   title: "Phone",
+        //   value: widget.authModeal.user?.phone ?? "",
+        // ),
+        // CustomDetilsProfilei(
+        //   icon: Icons.insert_drive_file,
+        //   title: "National ID",
+        //   value: widget.authModeal.user?.nationalId ?? "",
+        // ),
+        // CustomDetilsProfilei(
+        //   icon: Icons.insert_drive_file,
+        //   title: "Gender",
+        //   value: widget.authModeal.user?.gender ?? "",
+        // ),
         SizedBox(height: 30.h),
       ],
     );
   }
-}
-
-Widget _buildSectionTitle(String title, IconData? icon) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text(
-        title,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16.sp,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      if (icon != null)
-        Icon(
-          icon,
-          color: Colors.blue,
-          size: 20.sp,
-        ),
-    ],
-  );
 }
