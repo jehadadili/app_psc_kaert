@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/feature/favorite/presntion/cubit/cubit.dart';
 import 'package:market/src/feature/favorite/presntion/view/widgets/custom_desin_favor.dart';
 import 'package:market/src/feature/home/domain/model/home_model.dart';
@@ -14,10 +13,10 @@ class FavoriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorApp.white,
+      backgroundColor: Colors.blueGrey[500],
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: ColorApp.white,
+        backgroundColor: Colors.blueGrey[500],
         title: Text(
           "Favorites",
           style: TextStyle(

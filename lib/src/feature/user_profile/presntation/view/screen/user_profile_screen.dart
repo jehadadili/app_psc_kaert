@@ -5,7 +5,6 @@ import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/feature/user_profile/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/user_profile/presntation/cubit/state.dart';
 import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_personal_information.dart';
-import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_utilities.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -37,7 +36,6 @@ class UserProfileScreen extends StatelessWidget {
                   children: [
                     CustomPersonalInformation(
                         authModeal: state.authModeal), // عرض بيانات المستخدم
-                    const CustomUtilities() // إضافة الأدوات المساعدة الأخرى
                   ],
                 ),
               ),

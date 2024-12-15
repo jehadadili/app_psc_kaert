@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:market/src/core/style/color/color_app.dart';
+import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_text_field_profile.dart';
 
-class CustomDetilsProfilei extends StatelessWidget {
-  const CustomDetilsProfilei({
+import '../../../../../core/validator/validater.dart';
+
+class CustomDetilsProfileiEmail extends StatelessWidget {
+  const CustomDetilsProfileiEmail({
     super.key,
-    required this.icon,
-    required this.title,
     required this.value,
     this.onPressed,
     this.iconedit,
     required this.editprofile,
-    this.controller,
+    required this.emailController,
   });
-  final IconData icon;
+
+  final TextEditingController emailController;
   final IconData? iconedit;
-  final String title;
   final String value;
   final void Function()? onPressed;
   final bool editprofile;
-  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +32,8 @@ class CustomDetilsProfilei extends StatelessWidget {
       child: Row(
         children: [
           Icon(
-            icon,
-            color: Colors.pinkAccent,
+            Icons.person,
+            color: Colors.white,
             size: 24.sp,
           ),
           SizedBox(width: 15.w),
@@ -42,13 +41,13 @@ class CustomDetilsProfilei extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                title,
+                "Phone",
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 14.sp,
                 ),
               ),
-              SizedBox(height: 2.h),
+              SizedBox(height: 5.h),
               editprofile
                   ? Text(
                       value,
@@ -59,13 +58,15 @@ class CustomDetilsProfilei extends StatelessWidget {
                       ),
                     )
                   : SizedBox(
-                      height: 30,
-                      width: 150,
-                      child: TextField(
-                        controller: controller,
-                        style: TextStyle(color: ColorApp.white),
+                      height: 20.h,
+                      child: CustomTextFieldProfile(
+                        controller: emailController,
+                        hintText: "Enter your email",
+                        validator: (email) {
+                          return MyValidator.emalValidator(email);
+                        },
                       ),
-                    )
+                    ),
             ],
           ),
           const Spacer(),

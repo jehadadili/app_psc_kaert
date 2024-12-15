@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/core/di/service_locator.dart';
-import 'package:market/src/feature/auth/presntation/view/screen/login/screen/login_screen.dart';
 import 'package:market/src/feature/cart/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/favorite/presntion/cubit/cubit.dart';
 import 'package:market/src/feature/auth/presntation/cubit/cubit.dart';
 import 'package:market/src/feature/search/cubit/cubit.dart';
 import 'package:market/src/feature/spalsh_screen/screen/splash_screen.dart';
 import 'package:market/src/feature/user_profile/presntation/cubit/cubit.dart';
-import 'package:market/src/feature/user_profile/presntation/view/screen/user_profile_screen.dart';
 
 class AppShop extends StatelessWidget {
   const AppShop({super.key});

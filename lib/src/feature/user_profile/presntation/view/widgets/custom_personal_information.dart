@@ -3,8 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:market/src/feature/auth/domain/model/register_modeal.dart';
 import 'package:market/src/feature/user_profile/presntation/cubit/cubit.dart';
-import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_detils_profilei.dart';
 import 'package:intl/intl.dart';
+import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_detils_profile.dart';
+import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_detils_profilei_email.dart';
+import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_detils_profilei_name.dart';
+import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_detils_profilei_phone.dart';
 import 'package:market/src/feature/user_profile/presntation/view/widgets/custom_section_title.dart'; // مكتبة لعرض التاريخ
 
 class CustomPersonalInformation extends StatefulWidget {
@@ -17,7 +20,10 @@ class CustomPersonalInformation extends StatefulWidget {
 }
 
 class _CustomPersonalInformationState extends State<CustomPersonalInformation> {
-  bool edit = true;
+  bool editname = true;
+  bool editemail = true;
+  bool editphone = true;
+  bool isEditing = false;
   TextEditingController textusernameController = TextEditingController();
   TextEditingController textemailController = TextEditingController();
   TextEditingController textnumperController = TextEditingController();
@@ -63,58 +69,62 @@ class _CustomPersonalInformationState extends State<CustomPersonalInformation> {
         SizedBox(height: 30.h),
         // المعلومات الشخصية
         CustomSectionTitle(
-          savedata: edit,
+          savedata: isEditing, // تمرير حالة الحفظ
           title: "Personal Information",
           onPressed: () {
             ubdatecubit.ubdateProfile(
-                name: textnumperController.text,
-                email: textemailController.text,
-                phone: textnumperController.text,
-                password: "");
+              name: textusernameController.text,
+              email: textemailController.text,
+              phone: textnumperController.text,
+              password: "",
+            );
           },
         ),
         SizedBox(height: 10.h),
-        CustomDetilsProfilei(
-          icon: Icons.person,
-          title: "Name",
+        CustomDetailsProfileName(
           value: widget.authModeal.user?.name ?? "Unknown",
           iconedit: Icons.edit,
           onPressed: () {
             setState(() {
-              edit = !edit;
+              editname = !editname;
             });
           },
-          editprofile: edit,
-          controller: textusernameController,
+          editprofile: editname,
+          userNameController: textusernameController,
         ),
-        // CustomDetilsProfilei(
-        //   icon: Icons.email,
-        //   iconedit: Icons.edit,
-        //   onPressed: () {
-        //     setState(() {
-        //       edit = !edit;
-        //     });
-        //   },
-        //   controller: textemailController,
-        //   editprofile: edit,
-        //   title: "Email",
-        //   value: widget.authModeal.user?.email ?? "",
-        // ),
-        // CustomDetilsProfilei(
-        //   icon: Icons.phone,
-        //   title: "Phone",
-        //   value: widget.authModeal.user?.phone ?? "",
-        // ),
-        // CustomDetilsProfilei(
-        //   icon: Icons.insert_drive_file,
-        //   title: "National ID",
-        //   value: widget.authModeal.user?.nationalId ?? "",
-        // ),
-        // CustomDetilsProfilei(
-        //   icon: Icons.insert_drive_file,
-        //   title: "Gender",
-        //   value: widget.authModeal.user?.gender ?? "",
-        // ),
+        CustomDetilsProfileiEmail(
+          iconedit: Icons.edit,
+          onPressed: () {
+            setState(() {
+              editemail = !editemail;
+            });
+          },
+          emailController: textemailController,
+          editprofile: editemail,
+          value: widget.authModeal.user?.email ?? "",
+        ),
+        CustomDetilsProfileiPhone(
+          iconedit: Icons.edit,
+          onPressed: () {
+            setState(() {
+              editphone = !editphone;
+            });
+          },
+          phoneController: textnumperController,
+          editprofile: editphone,
+          value: widget.authModeal.user?.phone ?? "",
+        ),
+
+        CustomDetailsProfile(
+          icon: Icons.insert_drive_file,
+          title: "National ID",
+          value: widget.authModeal.user?.nationalId ?? "",
+        ),
+        CustomDetailsProfile(
+          icon: Icons.female,
+          title: "Gender",
+          value: widget.authModeal.user?.gender ?? "",
+        ),
         SizedBox(height: 30.h),
       ],
     );

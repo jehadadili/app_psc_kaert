@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market/src/core/style/color/color_app.dart';
 import 'package:market/src/feature/detils/presntation/view/widgets/detailed_info_widget.dart';
-import 'package:market/src/feature/detils/presntation/view/widgets/hero_tag.dart';
-import 'package:market/src/feature/detils/presntation/view/widgets/hero_widget.dart';
 import 'package:market/src/feature/home/domain/model/home_model.dart';
 
 class DetailPage extends StatelessWidget {
@@ -32,13 +30,10 @@ class DetailPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          HeroWidget(
-            tag: HeroTag.image(homeModel.image),
-            child: Image.network(
-              homeModel.image,
-              width: 150,
-              height: 150,
-            ),
+          Image.network(
+            homeModel.image,
+            width: 150,
+            height: 150,
           ),
           DetailedInfoWidget(homeModel: homeModel),
         ],

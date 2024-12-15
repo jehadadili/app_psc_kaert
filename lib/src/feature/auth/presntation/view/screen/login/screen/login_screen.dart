@@ -67,13 +67,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                 passwordController: passwordController,
                               ),
                               SizedBox(
-                                height: 20.h,
+                                height: 10.h,
                               ),
                               if (state is RegisterLoading)
                                 CustomWidgetLoading(
                                   color: Colors.blue,
                                   size: 50.sp,
                                 ),
+                              SizedBox(
+                                height: 30.h,
+                              ),
                               CustomButtomSignIn(
                                 onPressed: () {
                                   if (formKey.currentState!.validate()) {
