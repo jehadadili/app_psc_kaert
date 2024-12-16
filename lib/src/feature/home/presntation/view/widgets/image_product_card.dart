@@ -24,8 +24,8 @@ class ImageProductCard extends StatelessWidget {
               ),
             );
           },
-      //    child: Hero(
-        //    tag: homeModel.images.isNotEmpty ? homeModel.images[0] : '',
+          child: Hero(
+            tag: homeModel.images.isNotEmpty ? homeModel.images[0] : '',
             child: Padding(
               padding: EdgeInsets.all(5.r),
               child: Column(
@@ -56,7 +56,7 @@ class ImageProductCard extends StatelessWidget {
             ),
           ),
         ),
-
+      ),
     );
   }
 }
