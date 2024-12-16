@@ -42,7 +42,7 @@ class CustomDetailsProfileName extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "email",
+                  "name",
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 14.sp,

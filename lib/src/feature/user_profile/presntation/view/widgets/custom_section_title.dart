@@ -21,8 +21,7 @@ class CustomSectionTitle extends StatelessWidget {
           ),
         ),
         savedata
-            ? const SizedBox()
-            : TextButton(
+            ? TextButton(
                 onPressed: onPressed,
                 child: Text(
                   "Save",
@@ -32,6 +31,7 @@ class CustomSectionTitle extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ))
+            : const SizedBox()
       ],
     );
   }

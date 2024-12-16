@@ -2,50 +2,67 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:market/src/feature/user_profile/domain/use_cass/use_cass.dart';
 import 'package:market/src/feature/user_profile/domain/use_cass/use_cass_ubdate_profile.dart';
 import 'package:market/src/feature/user_profile/presntation/cubit/state.dart';
-
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit get(context) => BlocProvider.of(context);
+  static ProfileCubit get(context) => BlocProvider.of<ProfileCubit>(context);
+
   final UseCassprofile useCassprofile;
   final UseCassUbdateProfile useCassUbdateProfile;
-  bool edit = true;
+
+  bool editName = true;
+  bool editEmail = true;
+  bool editPhone = true;
+
   ProfileCubit({
     required this.useCassprofile,
     required this.useCassUbdateProfile,
   }) : super(ProfileInitial());
 
-  profiledate() async {
+  /// استدعاء بيانات الملف الشخصي
+  Future<void> profiledate() async {
     emit(ProfileLoading());
     try {
-      var respone = useCassprofile.profileusecass();
-      respone.then((value) {
-        emit(ProfileSuccess(authModeal: value));
-      });
+      var response = await useCassprofile.profileusecass();
+      emit(ProfileSuccess(authModeal: response));
     } catch (e) {
       emit(ProfileFilyer(mass: e.toString()));
     }
   }
 
-  ubdateProfile({
+  /// تحديث بيانات الملف الشخصي
+  Future<void> ubdateProfile({
     required String name,
     required String email,
     required String phone,
     required String password,
   }) async {
     emit(UPdateProfileLoading());
-
     try {
-      var ubdate = await useCassUbdateProfile.useUbdateProfile(
-          name: name, email: email, phone: phone, password: password);
-
-      emit(UPdateProfileSuccess(authModeal: ubdate));
-      profiledate();
+      var update = await useCassUbdateProfile.useUbdateProfile(
+        name: name,
+        email: email,
+        phone: phone,
+        password: password,
+      );
+      emit(UPdateProfileSuccess(authModeal: update));
+      await profiledate();
     } catch (e) {
       emit(UPdateProfileFilyer(mass: e.toString()));
     }
   }
 
-  // editprofile() {
-  //   edit != edit;
-  //   emit(SuccessEdit());
-  // }
+  /// تبديل حالة التعديل لكل حقل
+  void toggleEditName() {
+    editName = !editName;
+    emit(SuccessEdit());
+  }
+
+  void toggleEditEmail() {
+    editEmail = !editEmail;
+    emit(SuccessEdit());
+  }
+
+  void toggleEditPhone() {
+    editPhone = !editPhone;
+    emit(SuccessEdit());
+  }
 }

@@ -41,7 +41,7 @@ class CustomDetilsProfileiEmail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Phone",
+                "email",
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 14.sp,
