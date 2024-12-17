@@ -31,7 +31,6 @@ class _CustomPersonalInformationState extends State<CustomPersonalInformation> {
     final String currentDate =
         DateFormat('EEEE, dd MMM, yyyy').format(DateTime.now());
 
-    // يتم تحديد حالة الحفظ بناءً على حالة أي حقل
     bool savedata = !profileCubit.editName ||
         !profileCubit.editEmail ||
         !profileCubit.editPhone;

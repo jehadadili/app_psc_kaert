@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:market/src/feature/user_profile/domain/use_cass/use_cass.dart';
 import 'package:market/src/feature/user_profile/domain/use_cass/use_cass_ubdate_profile.dart';
 import 'package:market/src/feature/user_profile/presntation/cubit/state.dart';
+
 class ProfileCubit extends Cubit<ProfileState> {
   static ProfileCubit get(context) => BlocProvider.of<ProfileCubit>(context);
 
@@ -54,15 +55,18 @@ class ProfileCubit extends Cubit<ProfileState> {
   void toggleEditName() {
     editName = !editName;
     emit(SuccessEdit());
+    profiledate();
   }
 
   void toggleEditEmail() {
     editEmail = !editEmail;
     emit(SuccessEdit());
+    profiledate();
   }
 
   void toggleEditPhone() {
     editPhone = !editPhone;
     emit(SuccessEdit());
+    profiledate();
   }
 }
