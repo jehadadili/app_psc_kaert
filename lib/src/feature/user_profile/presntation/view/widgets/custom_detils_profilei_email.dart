@@ -32,42 +32,46 @@ class CustomDetilsProfileiEmail extends StatelessWidget {
       child: Row(
         children: [
           Icon(
-            Icons.person,
+            Icons.email,
             color: Colors.white,
             size: 24.sp,
           ),
           SizedBox(width: 15.w),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "email",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 14.sp,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Email",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 14.sp,
+                  ),
                 ),
-              ),
-              SizedBox(height: 5.h),
-              editprofile
-                  ? Text(
-                      value,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.bold,
+                SizedBox(height: 5.h),
+                editprofile
+                    ? FittedBox(
+                        child: Text(
+                          value,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      )
+                    : SizedBox(
+                        height: 30.h,
+                        child: CustomTextFieldProfile(
+                          controller: emailController,
+                          hintText: "Enter your emaile",
+                          validator: (email) {
+                            return MyValidator.emalValidator(email);
+                          },
+                        ),
                       ),
-                    )
-                  : SizedBox(
-                      height: 20.h,
-                      child: CustomTextFieldProfile(
-                        controller: emailController,
-                        hintText: "Enter your email",
-                        validator: (email) {
-                          return MyValidator.emalValidator(email);
-                        },
-                      ),
-                    ),
-            ],
+              ],
+            ),
           ),
           const Spacer(),
           IconButton(

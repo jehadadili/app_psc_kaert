@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSectionTitle extends StatelessWidget {
-  const CustomSectionTitle(
-      {super.key, required this.title, this.onPressed, required this.savedata});
+  const CustomSectionTitle({
+    super.key,
+    required this.title,
+    this.onPressed,
+    required this.savedata,
+  });
+
   final String title;
   final void Function()? onPressed;
   final bool savedata;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -30,8 +36,9 @@ class CustomSectionTitle extends StatelessWidget {
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
                   ),
-                ))
-            : const SizedBox()
+                ),
+              )
+            : const SizedBox(), // الزر يظهر فقط إذا كانت حالة الحفظ مفعّلة
       ],
     );
   }

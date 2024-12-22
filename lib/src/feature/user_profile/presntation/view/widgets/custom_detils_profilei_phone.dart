@@ -59,7 +59,7 @@ class CustomDetilsProfileiPhone extends StatelessWidget {
                         ),
                       )
                     : SizedBox(
-                        height: 50.h,
+                        height: 30.h,
                         child: CustomTextFieldProfile(
                           controller: phoneController,
                           hintText: "Enter your phone",

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:market/src/core/extation/extation_navgter.dart';
 import 'package:market/src/feature/auth/presntation/cubit/state.dart';
 import 'package:market/src/feature/auth/presntation/view/screen/login/screen/login_screen.dart';
-import 'package:market/src/feature/home/presntation/view/screen/home_screen.dart';
 
 listener(BuildContext context, AuthState state) {
   if (state is RegisterSuccess) {

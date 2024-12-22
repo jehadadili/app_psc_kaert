@@ -32,7 +32,7 @@ class CustomDetailsProfileName extends StatelessWidget {
       child: Row(
         children: [
           Icon(
-            Icons.email,
+            Icons.person,
             color: Colors.white,
             size: 24.sp,
           ),

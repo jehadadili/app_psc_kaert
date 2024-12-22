@@ -25,11 +25,11 @@ class CustomUserDrawer extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 48.r,
                   backgroundImage:
-                      NetworkImage(state.authModeal.user?.profileImage),
+                      NetworkImage(state.authModeal.user?.profileImage ?? ''),
                 ),
               ),
               Text(
-                state.authModeal.user?.name,
+                state.authModeal.user?.name ?? '',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.sp,

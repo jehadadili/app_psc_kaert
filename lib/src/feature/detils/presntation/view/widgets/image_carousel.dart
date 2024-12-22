@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ImageCarousel extends StatelessWidget {
   final List<String> imageUrls;
@@ -11,7 +12,7 @@ class ImageCarousel extends StatelessWidget {
     return imageUrls.isNotEmpty
         ? CarouselSlider(
             options: CarouselOptions(
-              height: 200.0,
+              height: 200.h,
               autoPlay: true,
               enlargeCenterPage: true,
               aspectRatio: 16 / 9,

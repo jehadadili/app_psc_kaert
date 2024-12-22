@@ -41,12 +41,17 @@ class DetailInfo extends StatelessWidget {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                   Row(
                     children: [
-                      Text(
-                        homeModel.name,
-                        style: TextStyle(
-                          color: ColorApp.blue,
-                          fontSize: 25.sp,
-                          fontWeight: FontWeight.bold,
+                      Expanded(
+                        flex: 4,
+                        child: Text(
+                          homeModel.name,
+                          style: TextStyle(
+                            color: ColorApp.blue,
+                            fontSize: 25.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       const Spacer(),

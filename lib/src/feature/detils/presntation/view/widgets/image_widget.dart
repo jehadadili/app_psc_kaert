@@ -58,7 +58,7 @@ class ImageWidget extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(8.r)),
             child: Image.network(
               homeModel.image,
-              width: 300,
+              width: 300.w,
             ),
           ),
         ),

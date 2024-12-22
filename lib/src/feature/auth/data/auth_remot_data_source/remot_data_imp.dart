@@ -76,6 +76,10 @@ class RemotDataImp implements RemotDataSourceAuth {
       if (response.statusCode == 200 || response.statusCode == 201) {
         var data = response.data;
         var userLogin = AuthModeal.fromJson(data);
+
+        CasheHelper.saveData(key: keyjehad, value: userLogin.user!.token);
+        log(userLogin.user!.token.toString());
+
         return right(userLogin);
       } else {
         return left(ServerFailuer(errormasseig: "Unknown error occurred"));
